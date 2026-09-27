@@ -1,12 +1,41 @@
 import React, { useState } from 'react';
-import { REVIEWS } from '../data/restaurantData';
 import { Review } from '../types';
 
+export const REVIEWS_DATA: Review[] = [
+  {
+    id: 'rev-01',
+    author: 'Rajesh Shah',
+    role: 'Nashik Local Diner • Verified Visit',
+    rating: 5,
+    content:
+      'The Dal Makhani and Paneer Tikka Angara took me straight to Old Delhi royalty. You can genuinely taste the pure desi ghee and freshness in every single bite!',
+    date: 'Yesterday',
+  },
+  {
+    id: 'rev-02',
+    author: 'Dr. Pooja Kulkarni',
+    role: 'Family Gathering Host',
+    rating: 5,
+    content:
+      "We celebrated my parents' 50th wedding anniversary here. The Royal Nashik Thali presentation blew away our entire family. Impeccable hygiene and royal hospitality.",
+    date: '3 days ago',
+  },
+  {
+    id: 'rev-03',
+    author: 'Anand Mehta',
+    role: 'Jain Community Connoisseur',
+    rating: 5,
+    content:
+      'As strict Jain diners, finding genuine zero-root vegetable cuisine with fine dining elegance was difficult until we found The Namastey Nashik. An absolute revelation!',
+    date: '1 week ago',
+  },
+];
+
 export const ReviewsSection: React.FC = () => {
-  const [reviewsList, setReviewsList] = useState<Review[]>(REVIEWS);
+  const [reviewsList, setReviewsList] = useState<Review[]>(REVIEWS_DATA);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newAuthor, setNewAuthor] = useState('');
-  const [newFavoriteDish, setNewFavoriteDish] = useState('');
+  const [newRole, setNewRole] = useState('');
   const [newRating, setNewRating] = useState(5);
   const [newContent, setNewContent] = useState('');
   const [submittedMessage, setSubmittedMessage] = useState(false);
@@ -18,7 +47,7 @@ export const ReviewsSection: React.FC = () => {
     const newRev: Review = {
       id: `rev-${Date.now()}`,
       author: newAuthor.trim(),
-      role: newFavoriteDish.trim() ? `Loves ${newFavoriteDish.trim()}` : 'Google Verified Diner',
+      role: newRole.trim() || 'Verified Diner',
       rating: newRating,
       content: newContent.trim(),
       date: 'Just now',
@@ -30,162 +59,150 @@ export const ReviewsSection: React.FC = () => {
       setSubmittedMessage(false);
       setIsModalOpen(false);
       setNewAuthor('');
-      setNewFavoriteDish('');
+      setNewRole('');
       setNewContent('');
       setNewRating(5);
     }, 1500);
   };
 
   return (
-    <section className="w-full py-12 sm:py-space-xl bg-surface-container-low border-b border-surface-container" id="reviews">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-margin">
+    <section className="w-full bg-cream-canvas py-16 px-4 md:px-8 border-t border-outline-variant/30" id="reviews">
+      <div className="max-w-7xl mx-auto flex flex-col gap-12">
         
-        {/* Header & Scorecard */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-space-xl items-center pb-8 sm:pb-space-xl">
+        {/* Top Rating Bento Summary */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           
-          {/* Big Number Card (5 cols) */}
-          <div className="lg:col-span-5 p-5 sm:p-space-xl rounded-2xl bg-surface-container-lowest shadow-md flex flex-col gap-3 sm:gap-space-md border border-outline-variant/30">
-            <div className="flex items-center gap-space-xs text-secondary">
-              <span className="material-symbols-outlined text-[24px] sm:text-[28px]">reviews</span>
-              <span className="font-label-sm text-xs sm:text-label-sm font-bold uppercase tracking-wider">
-                Google Verified Feedback
-              </span>
-            </div>
-
-            <div className="flex items-baseline gap-space-sm">
-              <span className="font-display-lg text-4xl sm:text-5xl lg:text-[64px] font-bold text-on-surface leading-none">
-                4.6
+          {/* Rating Summary Card (5 cols) */}
+          <div className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-cream-surface shadow-xs border border-outline-variant/30 flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <span className="font-display text-4xl sm:text-5xl lg:text-[56px] text-primary leading-none font-bold">
+                4.8
               </span>
               <div className="flex flex-col">
-                <div className="flex items-center text-secondary">
-                  <span className="material-symbols-outlined text-[20px] sm:text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                  <span className="material-symbols-outlined text-[20px] sm:text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                  <span className="material-symbols-outlined text-[20px] sm:text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                  <span className="material-symbols-outlined text-[20px] sm:text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                  <span className="material-symbols-outlined text-[20px] sm:text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }}>star_half</span>
+                <div className="flex items-center text-saffron-vibrant">
+                  <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                  <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                  <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                  <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                  <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>star_half</span>
                 </div>
-                <span className="font-label-md text-xs sm:text-label-md text-on-surface-variant mt-0.5">
-                  Based on 2,214+ diner reviews
+                <span className="font-label-md text-xs sm:text-sm text-charcoal-muted font-semibold mt-0.5">
+                  Based on 2,400+ Verified Diners
                 </span>
               </div>
             </div>
 
-            <p className="font-body-md text-xs sm:text-body-md text-on-surface-variant">
-              Rated among the top pure vegetarian family destinations in Lawate Nagar & Tidke Colony circles.
+            <p className="font-body-sm text-xs sm:text-sm text-charcoal-muted leading-relaxed">
+              Recognized as Nashik's crown jewel for clean vegetarian fine dining. Celebrated by families, food bloggers, and connoisseurs.
             </p>
 
+            <div className="p-3.5 rounded-xl bg-peach-tint/50 border border-peach-tint flex items-center gap-3">
+              <span className="material-symbols-outlined text-primary text-[28px]">military_tech</span>
+              <div className="flex flex-col">
+                <span className="font-title-md text-sm sm:text-base text-primary font-bold">
+                  Best Pure Veg Restaurant
+                </span>
+                <span className="font-label-sm text-xs text-charcoal-muted">
+                  Food Connoisseur Award Nashik 2024
+                </span>
+              </div>
+            </div>
+
             <button
-              className="w-full py-3 px-space-md rounded-xl bg-surface-container-high text-on-surface hover:bg-surface-container active:bg-surface-container-highest font-label-lg text-xs sm:text-label-lg font-semibold transition-colors flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
               onClick={() => setIsModalOpen(true)}
+              className="mt-1 w-full py-2.5 rounded-xl bg-surface-container-lowest hover:bg-peach-tint/40 text-primary border border-primary/20 font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-xs flex items-center justify-center gap-1.5"
             >
-              <span className="material-symbols-outlined text-[20px] text-primary">edit_note</span>
-              <span>Write a Diner Review</span>
+              <span className="material-symbols-outlined text-[18px]">rate_review</span>
+              <span>Write a Guest Review</span>
             </button>
           </div>
 
-          {/* Breakdown Dimension Bars (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col gap-3 sm:gap-space-md">
-            <div>
-              <span className="font-label-sm text-xs sm:text-label-sm text-secondary uppercase tracking-widest font-bold">
-                Uncompromising Quality
-              </span>
-              <h2 className="font-headline-lg text-2xl sm:text-headline-lg text-on-surface mt-1">
-                What Our Diners Commend Most
-              </h2>
-            </div>
-
-            <div className="flex flex-col gap-2.5 sm:gap-space-sm">
-              {/* Metric 1 */}
-              <div className="flex flex-col gap-1">
-                <div className="flex justify-between font-label-md text-xs sm:text-label-md">
-                  <span className="text-on-surface font-semibold truncate pr-2">Pure Veg Authenticity & Kitchen Hygiene</span>
-                  <span className="text-tertiary font-bold shrink-0">4.9 / 5.0</span>
+          {/* Rating Breakdown Bar Chart (7 cols) */}
+          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-cream-card shadow-xs border border-outline-variant/30 flex flex-col gap-4">
+            <h3 className="font-title-lg text-base sm:text-title-lg text-primary font-bold">
+              Guest Sentiment Breakdown
+            </h3>
+            
+            <div className="flex flex-col gap-3 font-label-sm text-xs sm:text-sm">
+              <div className="flex items-center gap-3">
+                <span className="w-36 text-on-surface-variant font-medium shrink-0">Food Quality & Taste</span>
+                <div className="flex-1 h-3 rounded-full bg-surface-container-high overflow-hidden">
+                  <div className="h-full bg-pure-veg-green rounded-full" style={{ width: '98%' }}></div>
                 </div>
-                <div className="w-full h-2.5 sm:h-3 rounded-full bg-surface-container overflow-hidden">
-                  <div className="h-full rounded-full bg-tertiary" style={{ width: '98%' }}></div>
-                </div>
+                <span className="font-bold text-on-surface w-14 text-right">4.9 / 5</span>
               </div>
 
-              {/* Metric 2 */}
-              <div className="flex flex-col gap-1">
-                <div className="flex justify-between font-label-md text-xs sm:text-label-md">
-                  <span className="text-on-surface font-semibold truncate pr-2">Taste, Spice Balance & Freshness</span>
-                  <span className="text-primary font-bold shrink-0">4.8 / 5.0</span>
+              <div className="flex items-center gap-3">
+                <span className="w-36 text-on-surface-variant font-medium shrink-0">Hygiene & Cleanliness</span>
+                <div className="flex-1 h-3 rounded-full bg-surface-container-high overflow-hidden">
+                  <div className="h-full bg-pure-veg-green rounded-full" style={{ width: '99%' }}></div>
                 </div>
-                <div className="w-full h-2.5 sm:h-3 rounded-full bg-surface-container overflow-hidden">
-                  <div className="h-full rounded-full bg-primary" style={{ width: '96%' }}></div>
-                </div>
+                <span className="font-bold text-on-surface w-14 text-right">5.0 / 5</span>
               </div>
 
-              {/* Metric 3 */}
-              <div className="flex flex-col gap-1">
-                <div className="flex justify-between font-label-md text-xs sm:text-label-md">
-                  <span className="text-on-surface font-semibold truncate pr-2">Hospitality, Inclusivity & Welcoming Service</span>
-                  <span className="text-secondary font-bold shrink-0">4.8 / 5.0</span>
+              <div className="flex items-center gap-3">
+                <span className="w-36 text-on-surface-variant font-medium shrink-0">Regal Ambience</span>
+                <div className="flex-1 h-3 rounded-full bg-surface-container-high overflow-hidden">
+                  <div className="h-full bg-saffron-vibrant rounded-full" style={{ width: '94%' }}></div>
                 </div>
-                <div className="w-full h-2.5 sm:h-3 rounded-full bg-surface-container overflow-hidden">
-                  <div className="h-full rounded-full bg-secondary" style={{ width: '96%' }}></div>
-                </div>
+                <span className="font-bold text-on-surface w-14 text-right">4.7 / 5</span>
               </div>
 
-              {/* Metric 4 */}
-              <div className="flex flex-col gap-1">
-                <div className="flex justify-between font-label-md text-xs sm:text-label-md">
-                  <span className="text-on-surface font-semibold truncate pr-2">AC Dining Comfort & Ambiance</span>
-                  <span className="text-on-surface font-bold shrink-0">4.7 / 5.0</span>
+              <div className="flex items-center gap-3">
+                <span className="w-36 text-on-surface-variant font-medium shrink-0">Staff Courtesy</span>
+                <div className="flex-1 h-3 rounded-full bg-surface-container-high overflow-hidden">
+                  <div className="h-full bg-primary rounded-full" style={{ width: '96%' }}></div>
                 </div>
-                <div className="w-full h-2.5 sm:h-3 rounded-full bg-surface-container overflow-hidden">
-                  <div className="h-full rounded-full bg-outline" style={{ width: '94%' }}></div>
-                </div>
+                <span className="font-bold text-on-surface w-14 text-right">4.8 / 5</span>
               </div>
             </div>
           </div>
 
         </div>
 
-        {/* Testimonial Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-space-md">
-          {reviewsList.slice(0, 3).map((review, idx) => {
-            const avatarBg =
-              idx === 0
-                ? 'bg-primary-fixed text-on-primary-fixed'
-                : idx === 1
-                ? 'bg-tertiary-fixed text-on-tertiary-fixed'
-                : 'bg-secondary-fixed text-on-secondary-fixed';
+        {/* Testimonial Quotes Carousel Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {reviewsList.slice(0, 3).map((review) => {
+            const initials = review.author
+              .split(' ')
+              .map((n) => n[0])
+              .join('')
+              .toUpperCase()
+              .slice(0, 2);
 
             return (
               <div
                 key={review.id}
-                className="p-4 sm:p-space-lg rounded-2xl bg-surface-container-lowest shadow-xs flex flex-col justify-between gap-3 sm:gap-space-md border border-outline-variant/30"
+                className="p-6 rounded-2xl bg-cream-card shadow-xs border border-outline-variant/30 flex flex-col justify-between gap-4 transition-all hover:shadow-md"
               >
-                <div className="flex flex-col gap-space-xs">
-                  <div className="flex items-center text-secondary">
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center text-saffron-vibrant">
                     {[...Array(review.rating)].map((_, i) => (
                       <span
                         key={i}
-                        className="material-symbols-outlined text-[16px] sm:text-[18px]"
+                        className="material-symbols-outlined text-[18px]"
                         style={{ fontVariationSettings: "'FILL' 1" }}
                       >
                         star
                       </span>
                     ))}
                   </div>
-                  <p className="font-body-md text-xs sm:text-body-md text-on-surface pt-1 leading-relaxed">
+                  <p className="font-body-md text-xs sm:text-sm text-on-surface italic leading-relaxed">
                     "{review.content}"
                   </p>
                 </div>
 
-                <div className="flex items-center gap-space-sm pt-2 sm:pt-space-xs border-t border-surface-container">
-                  <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full ${avatarBg} flex items-center justify-center font-headline-sm text-sm sm:text-headline-sm font-bold shrink-0`}>
-                    {review.author.charAt(0)}
+                <div className="flex items-center gap-3 pt-2 border-t border-surface-container">
+                  <div className="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-primary text-sm shrink-0">
+                    {initials}
                   </div>
-                  <div className="min-w-0">
-                    <h4 className="font-label-lg text-xs sm:text-label-lg text-on-surface font-semibold truncate">
+                  <div className="flex flex-col min-w-0">
+                    <span className="font-title-md text-xs sm:text-sm text-on-surface font-semibold truncate">
                       {review.author}
-                    </h4>
-                    <p className="font-body-sm text-[11px] sm:text-[12px] text-on-surface-variant truncate">
+                    </span>
+                    <span className="font-body-sm text-[11px] text-charcoal-muted truncate">
                       {review.role}
-                    </p>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -195,112 +212,106 @@ export const ReviewsSection: React.FC = () => {
 
       </div>
 
-      {/* Review Modal */}
+      {/* Write a Review Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
-          {/* Backdrop click to close */}
-          <div className="fixed inset-0" onClick={() => setIsModalOpen(false)} />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+          <div className="relative w-full max-w-lg rounded-2xl bg-surface-container-lowest p-6 shadow-2xl border border-outline-variant/40 animate-in fade-in zoom-in-95 duration-150">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute right-4 top-4 text-on-surface-variant hover:text-on-surface cursor-pointer"
+            >
+              <span className="material-symbols-outlined text-[24px]">close</span>
+            </button>
 
-          <div className="relative w-full max-w-lg rounded-2xl bg-surface-container-lowest shadow-2xl overflow-hidden flex flex-col z-10 animate-in fade-in zoom-in-95 duration-150 my-auto max-h-[92vh]">
-            <div className="px-4 py-3.5 sm:px-5 sm:py-4 bg-surface-container-high flex items-center justify-between border-b border-surface-container shrink-0">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-[22px] sm:text-[24px] text-secondary">rate_review</span>
-                <h3 className="font-headline-sm text-base sm:text-lg font-bold text-on-surface">
-                  Share Your Dining Experience
-                </h3>
+            <h3 className="font-headline-sm text-lg sm:text-xl font-bold text-on-surface mb-2">
+              Share Your Namastey Nashik Experience
+            </h3>
+            <p className="font-body-sm text-xs sm:text-sm text-charcoal-muted mb-4">
+              Your feedback is displayed on our community page and helps fellow Nashik diners.
+            </p>
+
+            {submittedMessage ? (
+              <div className="p-4 rounded-xl bg-pure-veg-green/10 text-pure-veg-green text-center font-bold text-sm">
+                Thank you! Your verified review has been submitted.
               </div>
-              <button
-                className="p-1.5 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
-                onClick={() => setIsModalOpen(false)}
-                aria-label="Close review modal"
-              >
-                <span className="material-symbols-outlined text-[22px]">close</span>
-              </button>
-            </div>
+            ) : (
+              <form onSubmit={handleSubmitReview} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-bold text-on-surface mb-1">Your Name *</label>
+                  <input
+                    type="text"
+                    required
+                    value={newAuthor}
+                    onChange={(e) => setNewAuthor(e.target.value)}
+                    placeholder="e.g. Ramesh Patel"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant text-sm focus:outline-hidden focus:ring-2 focus:ring-primary"
+                  />
+                </div>
 
-            <form className="p-4 sm:p-5 flex flex-col gap-3.5 overflow-y-auto" onSubmit={handleSubmitReview}>
-              <div className="flex flex-col gap-1">
-                <label className="font-label-sm text-xs text-on-surface-variant font-bold">
-                  Your Overall Rating
-                </label>
-                <div className="flex items-center gap-1.5 sm:gap-2 text-secondary text-[28px] sm:text-[32px] cursor-pointer py-1">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <button
-                      type="button"
-                      key={s}
-                      onClick={() => setNewRating(s)}
-                      className="cursor-pointer hover:scale-110 active:scale-95 transition-transform p-0.5"
-                    >
-                      <span
-                        className="material-symbols-outlined text-[28px] sm:text-[32px]"
-                        style={{ fontVariationSettings: s <= newRating ? "'FILL' 1" : "'FILL' 0" }}
+                <div>
+                  <label className="block text-xs font-bold text-on-surface mb-1">Favorite Dish or Visit Type</label>
+                  <input
+                    type="text"
+                    value={newRole}
+                    onChange={(e) => setNewRole(e.target.value)}
+                    placeholder="e.g. Loved Dal Makhani Heritage / Family Dinner"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant text-sm focus:outline-hidden focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-on-surface mb-1">Rating</label>
+                  <div className="flex items-center gap-1.5 text-saffron-vibrant">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        type="button"
+                        key={star}
+                        onClick={() => setNewRating(star)}
+                        className="cursor-pointer"
                       >
-                        star
-                      </span>
-                    </button>
-                  ))}
-                  <span className="font-label-md text-xs sm:text-sm text-on-surface-variant ml-2 font-bold">{newRating} / 5 Stars</span>
+                        <span
+                          className="material-symbols-outlined text-[26px]"
+                          style={{ fontVariationSettings: star <= newRating ? "'FILL' 1" : "'FILL' 0" }}
+                        >
+                          star
+                        </span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex flex-col gap-1">
-                <label className="font-label-sm text-xs text-on-surface-variant font-bold">
-                  Your Name *
-                </label>
-                <input
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-surface text-on-surface font-body-sm text-xs sm:text-sm shadow-xs focus:outline-hidden focus:ring-2 focus:ring-primary/40 border border-outline-variant/60"
-                  placeholder="e.g. Radhika Sharma"
-                  required
-                  type="text"
-                  value={newAuthor}
-                  onChange={(e) => setNewAuthor(e.target.value)}
-                />
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <label className="font-label-sm text-xs text-on-surface-variant font-bold">
-                  Favorite Dish (Optional)
-                </label>
-                <input
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-surface text-on-surface font-body-sm text-xs sm:text-sm shadow-xs focus:outline-hidden focus:ring-2 focus:ring-primary/40 border border-outline-variant/60"
-                  placeholder="e.g. Maharashtrian Thali, Shev Bhaji"
-                  type="text"
-                  value={newFavoriteDish}
-                  onChange={(e) => setNewFavoriteDish(e.target.value)}
-                />
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <label className="font-label-sm text-xs text-on-surface-variant font-bold">
-                  Review Comments *
-                </label>
-                <textarea
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-surface text-on-surface font-body-sm text-xs sm:text-sm shadow-xs focus:outline-hidden focus:ring-2 focus:ring-primary/40 border border-outline-variant/60"
-                  placeholder="Tell others about the food quality, hospitality, and safe pure veg environment..."
-                  required
-                  rows={3}
-                  value={newContent}
-                  onChange={(e) => setNewContent(e.target.value)}
-                />
-              </div>
-
-              {submittedMessage && (
-                <div className="p-3 rounded-xl bg-tertiary text-on-tertiary font-label-md text-xs sm:text-sm text-center font-bold shadow-sm animate-in fade-in">
-                  ✓ Thank you! Your verified review has been submitted.
+                <div>
+                  <label className="block text-xs font-bold text-on-surface mb-1">Your Review *</label>
+                  <textarea
+                    required
+                    rows={3}
+                    value={newContent}
+                    onChange={(e) => setNewContent(e.target.value)}
+                    placeholder="Tell us about the flavors, ghee aroma, ambiance, and service..."
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant text-sm focus:outline-hidden focus:ring-2 focus:ring-primary"
+                  ></textarea>
                 </div>
-              )}
 
-              <button
-                className="w-full py-3.5 px-4 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-lg text-xs sm:text-sm font-bold transition-all shadow-md cursor-pointer min-h-[44px] active:scale-[0.98]"
-                type="submit"
-              >
-                Publish Review
-              </button>
-            </form>
+                <div className="flex items-center justify-end gap-3 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsModalOpen(false)}
+                    className="px-4 py-2 rounded-xl text-xs font-semibold text-charcoal-muted hover:bg-surface-container"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-5 py-2.5 rounded-xl bg-primary hover:bg-saffron-vibrant text-on-primary font-bold text-xs shadow-xs"
+                  >
+                    Submit Review
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       )}
-
     </section>
   );
 };

@@ -1,8 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { MENU_ITEMS, RESTAURANT_INFO } from '../data/restaurantData';
 import { MenuItem } from '../types';
 import { DishModal } from './DishModal';
-import { DishVisual } from './DishIllustrations';
 
 interface MenuSectionProps {
   onAddToCart: (item: MenuItem, jainPrep?: boolean) => void;
@@ -10,475 +8,665 @@ interface MenuSectionProps {
   onOrderNow?: (item: MenuItem, jainPrep?: boolean) => void;
 }
 
-export const MenuSection: React.FC<MenuSectionProps> = ({ onAddToCart, onOpenOrderDrawer, onOrderNow }) => {
+export interface CuratedDish extends MenuItem {
+  category: 'starters' | 'mains' | 'rice' | 'chinese' | 'continental' | 'soups';
+  dietaryTags: ('chef' | 'must-try' | 'jain')[];
+  badgeText: string;
+  badgeColorClass: string;
+  specs: string[];
+}
+
+export const CURATED_DISHES: CuratedDish[] = [
+  {
+    id: 'curated-01',
+    name: 'Paneer Tikka Angara',
+    marathiName: 'पनीर टिक्का अंगारा • Tandoori Starter',
+    category: 'starters',
+    price: 360,
+    tag: "Chef's Special",
+    tagline: 'Medium Spicy • Jain Preparation Available',
+    description:
+      'Smoked organic cottage cheese marinated in spiced hung yogurt, Kashmiri deghi mirch, and roasted over fragrant charcoal embers.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida/AEtjO1XhqBit7H3pzkTrS1BNbyIv1PJrFqNcI2gorzs6yWzrIIAyMtzpLf_Kg-V-jwC1WxBHsCQft8J2UXMjzYwUrMz_xOyTGKMn-lfazkaYA4D8kqyUgjqdw9i0fq_59dr2cKPpAWmyjJXid4szC7zPydTAK65jiSsikWCuvTpJYUUdpPHA5orq1A3AQ6vv2AZ3O7Xa1qilTrIDJ13gmEZslKVe6dXHm9UGyVJYB8266zH1f8uSXHWQjt8qqw',
+    isJainAvailable: true,
+    spiceLevel: 'medium',
+    isPopular: true,
+    dietaryTags: ['chef', 'must-try', 'jain'],
+    badgeText: "Chef's Special",
+    badgeColorClass: 'bg-primary text-on-primary',
+    specs: ['Medium Spicy', 'Jain Preparation Available'],
+  },
+  {
+    id: 'curated-02',
+    name: 'Dal Makhani Heritage',
+    marathiName: 'दाल मखनी हेरिटेज • North Indian Main',
+    category: 'mains',
+    price: 310,
+    tag: '12h Slow Cooked',
+    tagline: 'Mild & Creamy • Prepared in Desi Ghee',
+    description:
+      'Slow-cooked black urad lentils simmered overnight over slow charcoal with churned white butter, rich tomato reduction, and fresh cream.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida/AEtjO1X8FxonM0c1gA4RXmtuw3hYUVb8HAZG3y6hpBrCQZWMEty4J7FpJAqhn7SQiYMAr7UOY6gLK-sQcD37cM5C_dpTpoiv4EiMZHZ3zkc_B1HPyWMzc5qNG77gFCPd40w1V7ELlAlJlUEBwJ7B-FcWTiDdkos8hkCXeyH_X9QnFx2ldmmbWKrVuPuJq7-p7bUUoiNwYow7FUFFGsjax4Et2oRUGAeCWpGDlOb9bbiwwQ-cRAYK6uKymeU3fZg',
+    isJainAvailable: false,
+    spiceLevel: 'mild',
+    isPopular: true,
+    dietaryTags: ['chef', 'must-try'],
+    badgeText: '12h Slow Cooked',
+    badgeColorClass: 'bg-saffron-vibrant text-on-primary',
+    specs: ['Mild & Creamy', 'Prepared in Desi Ghee'],
+  },
+  {
+    id: 'curated-03',
+    name: 'Subz Dum Handi Biryani',
+    marathiName: 'सब्ज दम हांडी बिरयानी • Served with Raita',
+    category: 'rice',
+    price: 340,
+    tag: 'Clay Pot Dum',
+    tagline: 'Aromatic Spiced • Includes Boondi Raita',
+    description:
+      'Fragrant long-grain aged basmati rice layered with garden vegetables, saffron milk, caramelized shallots, sealed and steam-cooked in handi.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida/AEtjO1WLTepefc_fir_jtIMt71xsrPE7eID2L4XQV5QRWEKD1uugx7e2DiEKxf0DytgvXDTpXNGPe3j2NhiLOmD-55JTzYNzBSDEOFdWWmZvdupYoW7JuPEmPTq9GU-iSu3_F3vRIlkvDHhQMjW5Z5U3_tD9NVQEC-IZ7CqneiLEveFzyAfm-KPLJNxYL7uUvnqOwkVe5StJPmwnbvxJnH-d0IXezaM_gzfcL7HL1TdUmjgJbsE9xQlM1NfPoHU',
+    isJainAvailable: true,
+    spiceLevel: 'medium',
+    isPopular: true,
+    dietaryTags: ['must-try', 'chef'],
+    badgeText: 'Clay Pot Dum',
+    badgeColorClass: 'bg-primary text-on-primary',
+    specs: ['Aromatic Spiced', 'Includes Boondi Raita'],
+  },
+  {
+    id: 'curated-04',
+    name: 'Kaju Curry Shahi',
+    marathiName: 'काजू करी शाही • Royal Nut Curry',
+    category: 'mains',
+    price: 385,
+    tag: 'Royal Delicacy',
+    tagline: 'Mild Royal Sweet-Savory • 100% Jain Option',
+    description:
+      'Golden roasted Goan cashew nuts bathed in a velvety tomato, cardamom, and melon seed mawa reduction topped with golden saffron threads.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida/AEtjO1XEBHqENPkXdymBy3fNfMOwvsdwg9hIDvyI2nJL4-qMX5oMoOW4NyrNIk68z8cXhIVJwdAeUtYeMvwDZhPOeGRzXo0JlovlA5jcxwSzZBsfDiLzbt-Nku9_IeZB7__zqJ_DvhJvP0KnPrCktKsDPj3XZxWlC0xTvBLJogFhx9nM4Aci-s2gxqB-rwV5cWoPq8aGz824arYzVxMp3owpnGkojqhrDK-8ihs5B8ZCXlDgn_bZEGoaKmhleuM',
+    isJainAvailable: true,
+    spiceLevel: 'mild',
+    isPopular: true,
+    dietaryTags: ['chef', 'jain'],
+    badgeText: 'Royal Delicacy',
+    badgeColorClass: 'bg-secondary text-on-secondary',
+    specs: ['Mild Royal Sweet-Savory', '100% Jain Option'],
+  },
+  {
+    id: 'curated-05',
+    name: 'Crispy Samosas & Pakoras',
+    marathiName: 'समोसा पकोड़ा प्लेटर • Traditional Snack',
+    category: 'starters',
+    price: 180,
+    tag: 'Evening Classic',
+    tagline: 'Includes Saunth & Pudina Dip • Fresh Fried Daily',
+    description:
+      'Flaky artisanal pastry stuffed with cumin-tempered potatoes and green peas, served alongside crunchy seasonal vegetable pakoras and imli chutney.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuB2Rgcd3g96974XrIxB9gpKjJfzv1he6UQI1Te0YUgwhdilHEcBXzKdTXXpsvBIRARek_it7c5aoNCnxJ8pODYa_UDsz1VHyz5Cs-dac4ZlHtcqnLBvlm8iueOIa5zTRXJrMjj-xjLN9QFeEa1YjtA98nR1yPRWf6QXWHAOXMNIzJ9jube4qlKAXK7y4MuLTjc7-20konrdnviwsqKRNEuzlT6eBuPdSSxe3E0kvgCXvNQVrJyvUAAs',
+    isJainAvailable: false,
+    spiceLevel: 'medium',
+    isPopular: true,
+    dietaryTags: ['must-try'],
+    badgeText: 'Evening Classic',
+    badgeColorClass: 'bg-peach-tint text-primary',
+    specs: ['Includes Saunth & Pudina Dip', 'Fresh Fried Daily'],
+  },
+  {
+    id: 'curated-06',
+    name: 'Garlic Cheese Burst Bread',
+    marathiName: 'गार्लिक चीज़ ब्रेड • Artisanal Continental',
+    category: 'continental',
+    price: 240,
+    tag: 'Wood-Fired',
+    tagline: '100% Real Dairy Mozzarella • Oregano Marinara Dip',
+    description:
+      'Freshly kneaded artisanal loaf infused with roasted garlic butter, fresh rosemary, and loaded with molten whole milk mozzarella cheese.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDRZd6BfUswryzAu_KcQi1BriUObtH8K-SILqiH9qt2RMMz0Sggiap_9WmeErDY9eOHwjLKP3KHHeGUPdwFzVGKjj2vZ9_QOcdEdwYGvg-6s_dpPAV5kItBkKCZgx6bsyxjs2_rvu4jMlM1O4ECkMB1ytigxvyjDzSfECTWeCgVV3Qz8jdnb-4q4lr4BLSJBbO_D-ZT_sA4y639naraHTmuUIX5V_I9PAOlSkOY8f-92Ad3FB4LsKRw',
+    isJainAvailable: false,
+    spiceLevel: 'mild',
+    isPopular: true,
+    dietaryTags: ['must-try'],
+    badgeText: 'Wood-Fired',
+    badgeColorClass: 'bg-secondary-container text-on-secondary-container',
+    specs: ['100% Real Dairy Mozzarella', 'Oregano Marinara Dip'],
+  },
+  {
+    id: 'curated-07',
+    name: 'Neapolitan Margherita',
+    marathiName: 'मार्गरेट पिज़्ज़ा • 11 Inch Thin Crust',
+    category: 'continental',
+    price: 390,
+    tag: 'Stone Baked',
+    tagline: 'Jain Pizza Crust Available • Zero Palm Oil',
+    description:
+      'Hand-stretched fermented sourdough, San Marzano tomato reduction, soft fresh bocconcini medallions, sweet genovese basil, and extra virgin olive oil.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCgpBN8sfA8l-WAmM4eNCsnWCYwpEXAazChF8890-vUVfkr6gp2ReC9mm7oSGofjFJm5DxTArjfZ9MqMYMvRXgG0Tgt3HRjD8s6tEhEdO8b2LTeEVuSMpw2-VfTsT80fI2RWJxrLmUkagOcAehxvpluYW4y3fTRDgahpqGNSqUhkovBj0WBzrvwgjlEjrl0GgPJSYFQotlGaljsF9VgLpTaRFMF6GRsmIVGJ1YpKL7IN7y_LNdyXw8g',
+    isJainAvailable: true,
+    spiceLevel: 'mild',
+    isPopular: true,
+    dietaryTags: ['chef', 'jain'],
+    badgeText: 'Stone Baked',
+    badgeColorClass: 'bg-primary text-on-primary',
+    specs: ['Jain Pizza Crust Available', 'Zero Palm Oil'],
+  },
+  {
+    id: 'curated-08',
+    name: 'Hakka Noodles & Manchurian',
+    marathiName: 'हक्का नूडल्स मंचूरियन • Indo-Chinese Combo',
+    category: 'chinese',
+    price: 320,
+    tag: 'Wok Master Special',
+    tagline: 'Mild Spice Kick • No Added MSG',
+    description:
+      'Steaming wok-tossed street noodles tossed with julienned veggies and spring onion, served with crispy vegetable Manchurian dumplings in ginger glaze.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAvKnlPC3aPuDQCQo1W7D-qPrTUjh_Bdi9FHqxRi-NH1C0q1VSxOWojEmp-y_pbnWL6aEdCdApbD6tjtYswlVKEYo7dkMzhviHokb0-c5kktupiNnKesaLGwDDTuINKKEpIU1CMWt7H8HGRgyGrZHHdCZ_Rm8X79P-MFWL2eHWQhmttRWBXoC_9KBuL3JSbqgGQrO8oy6ECfP3eRP2YmW5bPnfK5ZidmWQ7IeqQfwMPcMN0C2wNjISB',
+    isJainAvailable: false,
+    spiceLevel: 'medium',
+    isPopular: true,
+    dietaryTags: ['must-try'],
+    badgeText: 'Wok Master Special',
+    badgeColorClass: 'bg-peach-tint text-primary',
+    specs: ['Mild Spice Kick', 'No Added MSG'],
+  },
+  {
+    id: 'curated-09',
+    name: 'Royal Nashik Mahathali',
+    marathiName: 'रॉयल नाशिक महाथाली • Unlimited Dine-in',
+    category: 'mains',
+    price: 450,
+    tag: 'Signature Grand Feast',
+    tagline: '14 Authentic Delicacies • Available Lunch & Dinner',
+    description:
+      'A grand 14-item culinary banquet: Paneer Lababdar, Shev Bhaji, Dal Tadka, Ghee Phulkas, Basmati Pulao, Nashik Thecha, and Gulab Jamun.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida/AEtjO1WNsCw0ITtcsj5HRqIzJoaQUHv6bFm_HSZy5Udh2kWc1D-KDGl5yI0OfKGdiP2LU-VswNSIh0H-sjSepT3kF9iDQmeUcKTPvmuiTS_JofjgKiTJ-B_gbwz9AmP1yoGc9lMH9PBq4tbD6crMRDI4IRFEpE-xI-2lrLNUwcTYCn1SmWkSmDUdRw5uk5fGfNcFEDhjOJxgHkMZw5VYMEwMRuyBjttyBUooXIFfDnuuHEbAP3gCnuMfGLJcRgk',
+    isJainAvailable: true,
+    spiceLevel: 'medium',
+    isPopular: true,
+    dietaryTags: ['chef', 'must-try'],
+    badgeText: 'Signature Grand Feast',
+    badgeColorClass: 'bg-saffron-deep text-on-primary',
+    specs: ['14 Authentic Delicacies', 'Available Lunch & Dinner'],
+  },
+  {
+    id: 'curated-10',
+    name: 'Roasted Tomato & Basil Soup',
+    marathiName: 'टोमैटो बेसिल सूप • Slow Simmered',
+    category: 'soups',
+    price: 160,
+    tag: 'Starter Soup',
+    tagline: '100% Jain Compatible • Lactose-free on request',
+    description:
+      'Slow fire-roasted Nashik plum tomatoes pureed with fresh Italian sweet basil, cracked black pepper, and buttered herbed croutons.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAIJvsq38Q9Y1NvqB9T18qrFqEF2C0pbVZwTOAhRTdXV0A-jz0iJ9t5GdraoK3GFWAR32k8Sb30M7q5K97S50wX9qRP2Zy03t7Yx-zkAh6RSrkonCyj9wYeCL-8excMsiokuyQ73C_R2gyd-oCkMa4i_H2TU24bgglZMdgevta5olxIwtto7lbepe-o0knO0Qgz5oIdLVKLlVa1PIu2GEIPZiuPN_VLOjnLGhpHRyCC4LU3UUCBvP-l',
+    isJainAvailable: true,
+    spiceLevel: 'mild',
+    isPopular: false,
+    dietaryTags: ['jain'],
+    badgeText: 'Starter Soup',
+    badgeColorClass: 'bg-surface-container-high text-on-surface',
+    specs: ['100% Jain Compatible', 'Lactose-free on request'],
+  },
+  {
+    id: 'curated-11',
+    name: 'Idli Sambar Platter',
+    marathiName: 'इडली सांबर • Authentic South Indian',
+    category: 'soups',
+    price: 150,
+    tag: 'Healthy Steamed',
+    tagline: 'Zero Oil Preparation • High Protein & Light',
+    description:
+      'Triple-fermented, cloud-soft steamed rice cakes paired with slow-brewed drumstick lentil sambar and freshly grated coconut-chili chutney.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida/AEtjO1Wb8GpJLWaZ6NuzHtPfKzap3cuj_Fc4PPiFZboHu9EsbBcffOFaHFeDXdjpgHafSf1_3_kNBD37bXtmMzC5QwQEUTUruQK0OiJPSo18JQG2qdDKjz8p4hvDlEzvul_iPyZWxyL11B9J5-x_9Q88hVL39nt4fs-tKvaTzUaqPh1whzzyp8zB1G0dQACG99FHG_y1h2S6skuoxbycMa3lrFMJ5P0A_jehLw_WGVTxC6iSN5lszhnCvKavyd4',
+    isJainAvailable: true,
+    spiceLevel: 'mild',
+    isPopular: false,
+    dietaryTags: ['jain'],
+    badgeText: 'Healthy Steamed',
+    badgeColorClass: 'bg-pure-veg-green text-on-tertiary',
+    specs: ['Zero Oil Preparation', 'High Protein & Light'],
+  },
+  {
+    id: 'curated-12',
+    name: 'Royal Shahi Kebab Platter',
+    marathiName: 'शाही कबाब प्लैटर • Charcoal Tandoor',
+    category: 'starters',
+    price: 495,
+    tag: 'Party Platter (12 Pcs)',
+    tagline: 'Perfect for 3-4 Guests • Garnish with Pomegranate',
+    description:
+      'Curated tasting platter: 4x Paneer Malai Tikka, 4x Spinach Hara Bhara Kebab, and 4x Melt-in-mouth Dahi Ke Kebab with walnut and mint chutneys.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCUUSJ1nEx1fUAD04nCea-RwxUKP75Emc3tHPwjyeCpn1auV3aWgqgs4IAH7oUBPq8pOYSVRYBDtrFKwIqyanq1XtFi6msOgf7A4qNf19n5JopioSELBfCT_2E9C_jAsS_5MM9sDLqwdSVcYnulzvh0mWAfdxUIep1Fbf6Qu5x_W6zOKVhKDY6A_7YFUfUxdNSKI1dbaHs96UDG3M1yQCM-nMPoGSP8ts5AxMnQEJQLE5GBtzAMStBf',
+    isJainAvailable: false,
+    spiceLevel: 'medium',
+    isPopular: true,
+    dietaryTags: ['chef', 'must-try'],
+    badgeText: 'Party Platter (12 Pcs)',
+    badgeColorClass: 'bg-saffron-deep text-on-primary',
+    specs: ['Perfect for 3-4 Guests', 'Garnish with Pomegranate'],
+  },
+  {
+    id: 'curated-13',
+    name: 'Butter Naan & Roti Basket',
+    marathiName: 'बटर नान बास्केट • Clay Oven Bread Basket',
+    category: 'mains',
+    price: 190,
+    tag: 'Tandoor Fresh',
+    tagline: '100% Desi Ghee Glaze • Served Steaming Hot',
+    description:
+      'Freshly baked assortment from our traditional clay tandoor: 2x Garlic Butter Naan, 2x Laccha Paratha, and 2x Missi Roti brushed with pure ghee.',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida/AEtjO1WX9lZtGec95jiZMkzPs-b086ByOc91g_-4mxDL_IcK02vbOJxJPhMdgednOHlsOguG46CvM95RuUrXXoVCkl8GMX6YKDuQKlTJAtSevQHoFde2KjK4ACqulEoPpXt4BufxD8AzvLF5qB6iujhmjKVMs4Z00WHzDwLgp3Y6MaIyjV9rAhCKi3_mxVGqE7FZIGSOE2wthf2iHQcTCNynegU7qdrZ5PsYj0miARmfeqoCYCq-QLSoJCjodng',
+    isJainAvailable: true,
+    spiceLevel: 'mild',
+    isPopular: true,
+    dietaryTags: ['chef'],
+    badgeText: 'Tandoor Fresh',
+    badgeColorClass: 'bg-surface-container-high text-on-surface',
+    specs: ['100% Desi Ghee Glaze', 'Served Steaming Hot'],
+  },
+];
+
+export const MenuSection: React.FC<MenuSectionProps> = ({
+  onAddToCart,
+  onOpenOrderDrawer,
+  onOrderNow,
+}) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [jainOnly, setJainOnly] = useState<boolean>(false);
-  const [selectedSpice, setSelectedSpice] = useState<'all' | 'mild' | 'medium' | 'spicy'>('all');
-  const [bestsellerOnly, setBestsellerOnly] = useState<boolean>(false);
-  const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc'>('featured');
+  const [activeDietary, setActiveDietary] = useState<'chef' | 'must-try' | 'jain' | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [addedItemIds, setAddedItemIds] = useState<{ [key: string]: boolean }>({});
+  const [quantities, setQuantities] = useState<{ [dishId: string]: number }>({});
+  const [addedIds, setAddedIds] = useState<{ [dishId: string]: boolean }>({});
   const [modalDish, setModalDish] = useState<MenuItem | null>(null);
 
   const categories = [
-    { id: 'all', label: 'All Delicacies', icon: 'restaurant' },
-    { id: 'signature', label: "⭐ Chef's Specials", icon: 'star' },
-    { id: 'khakra', label: '🫓 Papad & Khakra', icon: 'bakery_dining' },
-    { id: 'starters', label: '🍢 Tandoor Starters', icon: 'kebab_dining' },
-    { id: 'chinese_starters', label: '🥢 Indo-Chinese', icon: 'ramen_dining' },
-    { id: 'soups', label: '🍲 Handcrafted Soups', icon: 'soup_kitchen' },
-    { id: 'curries', label: '🥘 Dal & Curries', icon: 'dinner_dining' },
-    { id: 'rice', label: '🍚 Rice & Biryani', icon: 'rice_bowl' },
-    { id: 'breads', label: '🫓 Tandoor Breads', icon: 'flatware' },
-    { id: 'noodles', label: '🍜 Noodles & Rice', icon: 'set_meal' },
-    { id: 'continental', label: '🍕 Continental & Pizza', icon: 'local_pizza' },
-    { id: 'salads', label: '🥗 Salads & Raitas', icon: 'eco' },
-    { id: 'beverages', label: '🍹 Mocktails & Coolers', icon: 'local_bar' },
+    { id: 'all', label: `All Offerings (${CURATED_DISHES.length})` },
+    { id: 'starters', label: 'Starters & Tandoor' },
+    { id: 'mains', label: 'Main Course & Thali' },
+    { id: 'rice', label: 'Rice & Dum Biryani' },
+    { id: 'chinese', label: 'Indo-Chinese Delights' },
+    { id: 'continental', label: 'Continental & Pizzas' },
+    { id: 'soups', label: 'Soups & Traditional' },
   ];
 
-  const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: MENU_ITEMS.length };
-    MENU_ITEMS.forEach((dish) => {
-      counts[dish.category] = (counts[dish.category] || 0) + 1;
-    });
-    return counts;
-  }, []);
-
-  const filteredItems = useMemo(() => {
-    let items = MENU_ITEMS.filter((item) => {
-      const categoryMatch = selectedCategory === 'all' || item.category === selectedCategory;
-      const jainMatch = !jainOnly || item.isJainAvailable;
-      const spiceMatch = selectedSpice === 'all' || item.spiceLevel === selectedSpice;
-      const bestsellerMatch = !bestsellerOnly || Boolean(item.isPopular);
+  const filteredDishes = useMemo(() => {
+    return CURATED_DISHES.filter((dish) => {
+      const matchesCat = selectedCategory === 'all' || dish.category === selectedCategory;
+      const matchesDiet = !activeDietary || dish.dietaryTags.includes(activeDietary);
       const query = searchQuery.toLowerCase().trim();
-      const searchMatch =
+      const matchesSearch =
         !query ||
-        item.name.toLowerCase().includes(query) ||
-        (item.marathiName && item.marathiName.toLowerCase().includes(query)) ||
-        item.description.toLowerCase().includes(query) ||
-        item.tag.toLowerCase().includes(query) ||
-        item.tagline.toLowerCase().includes(query);
-      return categoryMatch && jainMatch && spiceMatch && bestsellerMatch && searchMatch;
+        dish.name.toLowerCase().includes(query) ||
+        dish.marathiName.toLowerCase().includes(query) ||
+        dish.description.toLowerCase().includes(query);
+
+      return matchesCat && matchesDiet && matchesSearch;
     });
+  }, [selectedCategory, activeDietary, searchQuery]);
 
-    if (sortBy === 'price-asc') {
-      items = [...items].sort((a, b) => a.price - b.price);
-    } else if (sortBy === 'price-desc') {
-      items = [...items].sort((a, b) => b.price - a.price);
-    }
+  const handleQtyChange = (dishId: string, delta: number) => {
+    setQuantities((prev) => {
+      const current = prev[dishId] || 1;
+      const updated = Math.max(1, current + delta);
+      return { ...prev, [dishId]: updated };
+    });
+  };
 
-    return items;
-  }, [selectedCategory, jainOnly, selectedSpice, bestsellerOnly, sortBy, searchQuery]);
-
-  const handleAdd = (item: MenuItem, e?: React.MouseEvent) => {
+  const handleAdd = (dish: CuratedDish, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    onAddToCart(item, jainOnly && item.isJainAvailable);
-    setAddedItemIds((prev) => ({ ...prev, [item.id]: true }));
+    const qty = quantities[dish.id] || 1;
+    for (let i = 0; i < qty; i++) {
+      onAddToCart(dish, activeDietary === 'jain' && dish.isJainAvailable);
+    }
+    setAddedIds((prev) => ({ ...prev, [dish.id]: true }));
     setTimeout(() => {
-      setAddedItemIds((prev) => ({ ...prev, [item.id]: false }));
+      setAddedIds((prev) => ({ ...prev, [dish.id]: false }));
     }, 1200);
   };
 
-  const handleResetFilters = () => {
-    setSelectedCategory('all');
-    setJainOnly(false);
-    setSelectedSpice('all');
-    setBestsellerOnly(false);
-    setSortBy('featured');
-    setSearchQuery('');
+  const handleDirectOrder = (dish: CuratedDish, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (onOrderNow) {
+      onOrderNow(dish, activeDietary === 'jain' && dish.isJainAvailable);
+    } else {
+      handleAdd(dish);
+      onOpenOrderDrawer();
+    }
   };
 
   return (
-    <section className="w-full py-12 sm:py-space-xl bg-surface" id="signature-menu">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-margin">
+    <section className="w-full bg-cream-surface py-16 px-4 md:px-8 border-t border-outline-variant/30" id="menu-explorer">
+      {/* Invisible anchor for signature-menu compatibility */}
+      <div id="signature-menu" className="-mt-20 pt-20 pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto flex flex-col gap-8">
         
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-6 sm:pb-space-lg">
-          <div>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              <span className="font-label-sm text-xs sm:text-label-sm text-primary uppercase tracking-widest font-bold">
-                100% Pure Vegetarian Gastronomy
+              <span className="px-2.5 py-0.5 rounded-full bg-peach-tint text-primary font-label-sm text-xs font-bold tracking-wider uppercase">
+                Culinary Masterpieces
               </span>
-              <span className="inline-flex items-center justify-center w-3.5 h-3.5 border border-tertiary rounded-[2px] p-[1.5px]" title="Pure Veg">
-                <span className="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+              <span className="px-2.5 py-0.5 rounded-full bg-pure-veg-green text-on-tertiary font-label-sm text-xs font-bold">
+                100% Pure Veg
               </span>
             </div>
-            <h2 className="font-headline-lg text-2xl sm:text-3xl lg:text-headline-lg text-on-surface mt-1">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-headline-lg text-primary font-bold">
               Complete Pure Veg Dining Menu
             </h2>
-            <p className="font-body-md text-xs sm:text-sm text-on-surface-variant mt-1 max-w-2xl leading-relaxed">
-              Serving 12:00 PM – 11:00 PM Daily. Featuring Chef's Signature creations, clay tandoor starters, handcrafted soups, stone-ground curries, and tropical coolers.
+            <p className="font-body-md text-sm sm:text-base text-charcoal-muted">
+              Crafted fresh to order in pure clarified desi ghee, aromatic cold-pressed oils, and farm-fresh ingredients.
             </p>
           </div>
 
-          {/* Quick Bag / Order Button */}
-          <div className="flex items-center gap-2 shrink-0">
-            <button
-              onClick={onOpenOrderDrawer}
-              className="px-4 py-2.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-md text-xs sm:text-sm font-bold shadow-md transition-all flex items-center gap-2 cursor-pointer"
-            >
-              <span className="material-symbols-outlined text-[18px]">shopping_bag</span>
-              <span>View Order Bag</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Functional Filters Toolbar */}
-        <div className="p-3 sm:p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 mb-5 sm:mb-6 shadow-xs flex flex-col gap-3">
-          
-          {/* Row 1: Search & Jain Toggle & Sort */}
-          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
-            
-            {/* Real-time Search Input */}
-            <div className="relative flex-1 min-w-[240px]">
-              <span className="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[20px]">
-                search
-              </span>
+          {/* Search Box */}
+          <div className="flex items-center gap-3">
+            <div className="relative w-full sm:w-80">
               <input
-                className="w-full pl-10 pr-9 py-2.5 bg-surface-container-lowest text-on-surface font-body-sm text-xs sm:text-sm rounded-xl shadow-xs focus:outline-hidden focus:ring-2 focus:ring-primary/40 placeholder:text-on-surface-variant border border-outline-variant/40"
-                id="menu-search"
+                id="menu-search-input"
+                type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by dish name, ingredient (e.g. Paneer Khas, Khakra, Biryani)..."
-                type="text"
+                placeholder="Search dishes (e.g. Paneer, Biryani, Soup)..."
+                className="w-full px-4 py-2.5 pl-10 rounded-xl bg-surface-container-lowest text-on-surface font-body-md text-sm shadow-xs border border-outline-variant/40 focus:outline-hidden focus:ring-2 focus:ring-primary focus:border-primary transition-all"
               />
+              <span className="material-symbols-outlined absolute left-3 top-3 text-[18px] text-charcoal-muted pointer-events-none">
+                search
+              </span>
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-2.5 text-on-surface-variant hover:text-on-surface text-sm cursor-pointer p-0.5"
-                  aria-label="Clear search"
+                  className="absolute right-3 top-2.5 text-charcoal-muted hover:text-primary cursor-pointer"
                 >
-                  ✕
-                </button>
-              )}
-            </div>
-
-            {/* Jain Only Toggle & Sort Dropdown */}
-            <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
-              {/* Jain Only Toggle */}
-              <label className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl cursor-pointer transition-all border shadow-xs select-none ${
-                jainOnly
-                  ? 'bg-tertiary-fixed text-on-tertiary-fixed border-tertiary font-bold'
-                  : 'bg-surface-container-lowest text-on-surface border-outline-variant/30 hover:bg-surface-container'
-              }`}>
-                <input
-                  className="w-4 h-4 accent-tertiary rounded cursor-pointer"
-                  id="jain-toggle"
-                  type="checkbox"
-                  checked={jainOnly}
-                  onChange={(e) => setJainOnly(e.target.checked)}
-                />
-                <span className="font-label-md text-xs sm:text-sm flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-tertiary"></span>
-                  Jain Only (No Onion/Garlic)
-                </span>
-              </label>
-
-              {/* Sort By Dropdown */}
-              <div className="flex items-center gap-1 bg-surface-container-lowest px-2.5 py-1.5 rounded-xl border border-outline-variant/30 shadow-xs">
-                <span className="material-symbols-outlined text-[18px] text-on-surface-variant">sort</span>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as any)}
-                  className="bg-transparent text-xs font-semibold text-on-surface focus:outline-hidden cursor-pointer py-1"
-                >
-                  <option value="featured">Sort: Featured</option>
-                  <option value="price-asc">Price: Low to High</option>
-                  <option value="price-desc">Price: High to Low</option>
-                </select>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Row 2: Spice Level Filter Chips & Active Summary */}
-          <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-surface-container">
-            <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-0.5">
-              <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider mr-1 shrink-0">Spice:</span>
-              
-              <button
-                onClick={() => setSelectedSpice('all')}
-                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors cursor-pointer shrink-0 ${
-                  selectedSpice === 'all'
-                    ? 'bg-on-surface text-surface shadow-xs'
-                    : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container'
-                }`}
-              >
-                All Spice
-              </button>
-              
-              <button
-                onClick={() => setSelectedSpice('mild')}
-                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors cursor-pointer shrink-0 flex items-center gap-1 ${
-                  selectedSpice === 'mild'
-                    ? 'bg-secondary text-on-secondary shadow-xs'
-                    : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container'
-                }`}
-              >
-                <span>🟢</span>
-                <span>Mild</span>
-              </button>
-
-              <button
-                onClick={() => setSelectedSpice('medium')}
-                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors cursor-pointer shrink-0 flex items-center gap-1 ${
-                  selectedSpice === 'medium'
-                    ? 'bg-primary-container text-on-primary-container shadow-xs'
-                    : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container'
-                }`}
-              >
-                <span>🟡</span>
-                <span>Medium</span>
-              </button>
-
-              <button
-                onClick={() => setSelectedSpice('spicy')}
-                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors cursor-pointer shrink-0 flex items-center gap-1 ${
-                  selectedSpice === 'spicy'
-                    ? 'bg-error text-on-error shadow-xs'
-                    : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container'
-                }`}
-              >
-                <span>🌶️</span>
-                <span>Spicy</span>
-              </button>
-
-              <div className="w-[1px] h-4 bg-outline-variant/40 mx-1 shrink-0 hidden sm:block" />
-
-              <button
-                onClick={() => setBestsellerOnly(!bestsellerOnly)}
-                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors cursor-pointer shrink-0 flex items-center gap-1 border ${
-                  bestsellerOnly
-                    ? 'bg-secondary text-on-secondary border-secondary shadow-xs'
-                    : 'bg-surface-container-lowest text-on-surface border-outline-variant/30 hover:bg-surface-container'
-                }`}
-              >
-                <span>⭐</span>
-                <span>Bestsellers Only</span>
-              </button>
-            </div>
-
-            {/* Results count & reset */}
-            <div className="flex items-center gap-2 ml-auto text-xs text-on-surface-variant">
-              <span>Showing <strong>{filteredItems.length}</strong> items</span>
-              {(selectedCategory !== 'all' || jainOnly || selectedSpice !== 'all' || bestsellerOnly || searchQuery) && (
-                <button
-                  onClick={handleResetFilters}
-                  className="text-primary hover:underline font-bold cursor-pointer"
-                >
-                  Reset Filters
+                  <span className="material-symbols-outlined text-[16px]">close</span>
                 </button>
               )}
             </div>
           </div>
-
         </div>
 
-        {/* Category Filter Tabs - Mobile Horizontal Scrollable */}
-        <div className="relative -mx-4 px-4 sm:mx-0 sm:px-0 mb-6">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none snap-x" id="category-tabs">
-            {categories.map((cat) => {
-              const count = categoryCounts[cat.id] ?? 0;
-              const isSelected = selectedCategory === cat.id;
-
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-3.5 sm:px-4 py-2 rounded-xl font-label-md text-xs sm:text-sm whitespace-nowrap transition-all cursor-pointer shrink-0 snap-start flex items-center gap-1.5 active:scale-95 border ${
-                    isSelected
-                      ? 'bg-primary text-on-primary border-primary shadow-sm font-bold'
-                      : 'bg-surface-container-lowest text-on-surface border-outline-variant/30 hover:bg-surface-container'
-                  }`}
-                >
-                  <span>{cat.label}</span>
-                  <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
-                    isSelected ? 'bg-on-primary text-primary' : 'bg-surface-container-high text-on-surface-variant'
-                  }`}>
-                    {count}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
+        {/* Category Filter Pills Bar */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="category-pills">
+          {categories.map((cat) => {
+            const isActive = selectedCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`cat-pill px-5 py-2 rounded-full font-label-md text-xs sm:text-sm font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                  isActive
+                    ? 'active-cat bg-primary text-on-primary shadow-xs'
+                    : 'bg-surface-container-lowest text-charcoal-muted hover:bg-peach-tint hover:text-primary border border-outline-variant/30'
+                }`}
+              >
+                {cat.label}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Menu Grid with Real Food Photography */}
-        {filteredItems.length === 0 ? (
-          <div className="text-center py-16 bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center gap-3">
-            <span className="material-symbols-outlined text-[48px] text-outline-variant">search_off</span>
-            <h3 className="font-headline-sm text-lg font-bold text-on-surface">No dishes match your active filters</h3>
-            <p className="font-body-sm text-xs sm:text-sm text-on-surface-variant max-w-md">
-              Try switching categories, clearing the search keyword, or unchecking the Jain-only filter to see more pure veg delicacies.
-            </p>
-            <button
-              onClick={handleResetFilters}
-              className="mt-2 px-5 py-2.5 rounded-xl bg-primary text-on-primary font-label-md text-xs font-bold hover:bg-primary-container transition-colors cursor-pointer"
+        {/* Quick Dietary Preference Badges */}
+        <div className="flex flex-wrap items-center gap-3 text-label-sm font-label-sm text-xs text-charcoal-muted">
+          <span className="font-bold text-on-surface">Filter by:</span>
+
+          <button
+            onClick={() => setActiveDietary(activeDietary === 'chef' ? null : 'chef')}
+            className={`px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer font-semibold ${
+              activeDietary === 'chef'
+                ? 'bg-primary text-on-primary shadow-xs'
+                : 'bg-surface-container-high text-charcoal-muted hover:bg-peach-tint hover:text-primary'
+            }`}
+          >
+            <span
+              className={`material-symbols-outlined text-[15px] ${
+                activeDietary === 'chef' ? 'text-on-primary' : 'text-primary'
+              }`}
+              style={{ fontVariationSettings: "'FILL' 1" }}
             >
-              Reset All Filters
+              star
+            </span>
+            <span>Chef Special</span>
+          </button>
+
+          <button
+            onClick={() => setActiveDietary(activeDietary === 'must-try' ? null : 'must-try')}
+            className={`px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer font-semibold ${
+              activeDietary === 'must-try'
+                ? 'bg-primary text-on-primary shadow-xs'
+                : 'bg-surface-container-high text-charcoal-muted hover:bg-peach-tint hover:text-primary'
+            }`}
+          >
+            <span
+              className={`material-symbols-outlined text-[15px] ${
+                activeDietary === 'must-try' ? 'text-on-primary' : 'text-saffron-vibrant'
+              }`}
+            >
+              local_fire_department
+            </span>
+            <span>Must Try</span>
+          </button>
+
+          <button
+            onClick={() => setActiveDietary(activeDietary === 'jain' ? null : 'jain')}
+            className={`px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer font-semibold ${
+              activeDietary === 'jain'
+                ? 'bg-pure-veg-green text-on-tertiary shadow-xs'
+                : 'bg-surface-container-high text-charcoal-muted hover:bg-peach-tint hover:text-primary'
+            }`}
+          >
+            <span className="w-2 h-2 rounded-full bg-pure-veg-green shrink-0"></span>
+            <span>Jain Option Available</span>
+          </button>
+
+          {activeDietary && (
+            <button
+              onClick={() => setActiveDietary(null)}
+              className="text-primary hover:underline text-xs ml-1 cursor-pointer"
+            >
+              Reset filter
+            </button>
+          )}
+        </div>
+
+        {/* Menu Grid */}
+        {filteredDishes.length === 0 ? (
+          <div className="py-16 text-center bg-cream-card rounded-2xl border border-dashed border-outline-variant p-8 flex flex-col items-center gap-3">
+            <span className="material-symbols-outlined text-4xl text-charcoal-muted">dinner_dining</span>
+            <p className="text-on-surface font-semibold">No dishes match your active filters.</p>
+            <button
+              onClick={() => {
+                setSelectedCategory('all');
+                setActiveDietary(null);
+                setSearchQuery('');
+              }}
+              className="px-4 py-2 rounded-lg bg-primary text-on-primary text-xs font-bold"
+            >
+              Show All Dishes
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6" id="dish-grid">
-            {filteredItems.map((dish) => {
-              const isAdded = addedItemIds[dish.id];
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-items-grid">
+            {filteredDishes.map((dish) => {
+              const qty = quantities[dish.id] || 1;
+              const isAdded = addedIds[dish.id];
 
               return (
                 <div
                   key={dish.id}
                   onClick={() => setModalDish(dish)}
-                  className="dish-card rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-lg overflow-hidden flex flex-col group cursor-pointer transition-all duration-200 border border-outline-variant/30 active:scale-[0.99]"
+                  className="menu-card rounded-2xl overflow-hidden bg-cream-card shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-outline-variant/30 cursor-pointer group"
                 >
-                  {/* Real Food Image Banner */}
-                  <div className="relative h-48 sm:h-52 bg-surface-container overflow-hidden">
-                    <DishVisual
-                      dishId={dish.id}
-                      imageUrl={dish.imageUrl}
-                      name={dish.name}
-                      category={dish.category}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                  <div>
+                    {/* Dish Image */}
+                    <div className="relative h-56 overflow-hidden bg-surface-container-high">
+                      <img
+                        src={dish.imageUrl}
+                        alt={dish.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
 
-                    {/* Gradient shade for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
+                      {/* Pure Veg Badge */}
+                      <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-surface-container-lowest/90 backdrop-blur-sm flex items-center gap-1.5 shadow-xs">
+                        <div className="w-3.5 h-3.5 border-2 border-pure-veg-green flex items-center justify-center p-0.5">
+                          <div className="w-1.5 h-1.5 rounded-full bg-pure-veg-green"></div>
+                        </div>
+                        <span className="font-label-sm text-[11px] text-pure-veg-green font-bold">Pure Veg</span>
+                      </div>
 
-                    {/* Top-left Badges */}
-                    <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex flex-wrap gap-1.5 z-10">
-                      <span className="px-2.5 py-1 rounded-md bg-primary-container text-on-primary-container font-label-sm text-[10px] sm:text-xs font-bold shadow-xs">
-                        {dish.tag}
+                      {/* Pill Badge */}
+                      <span
+                        className={`absolute top-3 right-3 px-2.5 py-0.5 rounded-full font-label-sm text-xs font-semibold shadow-xs ${dish.badgeColorClass}`}
+                      >
+                        {dish.badgeText}
                       </span>
-                      {dish.isJainAvailable && (
-                        <span className="px-2.5 py-1 rounded-md bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-[10px] sm:text-xs font-bold shadow-xs flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
-                          Jain Option
-                        </span>
-                      )}
                     </div>
 
-                    {/* Spice Level Indicator */}
-                    <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 px-2 py-0.5 rounded-md bg-black/50 backdrop-blur-sm text-white font-label-sm text-[10px] z-10 flex items-center gap-1">
-                      <span>{dish.spiceLevel === 'spicy' ? '🌶️ Spicy' : dish.spiceLevel === 'medium' ? '🟡 Medium' : '🟢 Mild'}</span>
-                    </div>
-
-                    {/* Price Badge on photo */}
-                    <div className="absolute bottom-2.5 right-2.5 sm:bottom-3 sm:right-3 px-3 py-1 rounded-full bg-surface-container-lowest/95 backdrop-blur-md text-primary font-headline-sm text-sm sm:text-base font-bold shadow-md z-10">
-                      ₹{dish.price}
-                    </div>
-                  </div>
-
-                  {/* Dish Card Body */}
-                  <div className="p-4 sm:p-5 flex flex-col flex-1 gap-2">
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="min-w-0">
-                        <h3 className="font-headline-sm text-base sm:text-lg font-bold text-on-surface leading-snug group-hover:text-primary transition-colors truncate">
-                          {dish.name}
-                        </h3>
-                        {dish.marathiName && (
-                          <span className="font-label-sm text-xs text-secondary font-semibold block mt-0.5">
+                    {/* Content */}
+                    <div className="p-5 flex flex-col gap-2.5">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <div className="min-w-0">
+                          <h3 className="font-title-lg text-lg text-primary font-bold truncate group-hover:text-saffron-deep transition-colors">
+                            {dish.name}
+                          </h3>
+                          <span className="font-label-sm text-xs text-charcoal-muted block truncate mt-0.5">
                             {dish.marathiName}
                           </span>
-                        )}
-                      </div>
-                      <span
-                        className="inline-flex items-center justify-center w-4 h-4 border border-tertiary rounded-[2px] p-[2px] shrink-0 mt-1"
-                        title="100% Pure Vegetarian"
-                      >
-                        <span className="w-2 h-2 rounded-full bg-tertiary"></span>
-                      </span>
-                    </div>
-
-                    <p className="font-body-sm text-xs text-on-surface-variant flex-1 line-clamp-2 leading-relaxed">
-                      {dish.description}
-                    </p>
-
-                    {/* Tagline spec pill */}
-                    <div className="flex items-center gap-1.5 pt-1">
-                      <span className="inline-flex items-center gap-1 font-label-sm text-[11px] text-primary bg-primary-fixed/40 px-2 py-0.5 rounded-md font-medium">
-                        <span className="material-symbols-outlined text-[13px]">local_fire_department</span>
-                        {dish.tagline}
-                      </span>
-                    </div>
-
-                    {/* Action Buttons: Order Now & Add to Bag */}
-                    <div className="pt-2 sm:pt-3 mt-auto flex items-center gap-2">
-                      <button
-                        type="button"
-                        className="flex-1 py-2.5 px-3 rounded-xl font-label-md text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer min-h-[42px] bg-tertiary hover:bg-tertiary-container text-on-tertiary active:scale-[0.98]"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          if (onOrderNow) {
-                            onOrderNow(dish, jainOnly && dish.isJainAvailable);
-                          } else {
-                            handleAdd(dish, e);
-                          }
-                        }}
-                        title="Order this dish & send direct message to restaurant"
-                      >
-                        <span className="material-symbols-outlined text-[18px]">send_to_mobile</span>
-                        <span>Order Now</span>
-                      </button>
-
-                      <button
-                        type="button"
-                        className={`py-2.5 px-3 rounded-xl font-label-md text-xs font-semibold transition-all flex items-center justify-center gap-1 shadow-xs cursor-pointer min-h-[42px] active:scale-[0.98] ${
-                          isAdded
-                            ? 'bg-secondary text-on-secondary'
-                            : 'bg-surface-container-high hover:bg-surface-container text-on-surface border border-outline-variant/40'
-                        }`}
-                        onClick={(e) => handleAdd(dish, e)}
-                        title="Add to dining bag"
-                      >
-                        <span className="material-symbols-outlined text-[18px]">
-                          {isAdded ? 'check' : 'add_shopping_cart'}
+                        </div>
+                        <span className="font-headline-sm text-xl text-saffron-deep font-bold shrink-0">
+                          ₹{dish.price}
                         </span>
-                        <span>{isAdded ? 'Added' : '+ Bag'}</span>
-                      </button>
+                      </div>
+
+                      <p className="font-body-sm text-xs sm:text-sm text-charcoal-muted line-clamp-2 leading-relaxed">
+                        {dish.description}
+                      </p>
+
+                      <div className="flex flex-wrap items-center gap-2 pt-1 text-on-surface-variant font-label-sm text-xs">
+                        {dish.specs.map((spec, sIdx) => (
+                          <React.Fragment key={sIdx}>
+                            {sIdx > 0 && <span>•</span>}
+                            <span
+                              className={
+                                spec.includes('Jain')
+                                  ? 'text-pure-veg-green font-semibold'
+                                  : spec.includes('Spicy')
+                                  ? 'text-saffron-deep font-semibold'
+                                  : 'text-charcoal-muted'
+                              }
+                            >
+                              {spec}
+                            </span>
+                          </React.Fragment>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
+                  {/* Actions Bar */}
+                  <div
+                    className="p-5 pt-0 flex flex-col sm:flex-row items-center justify-between gap-2.5"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="flex items-center rounded-xl bg-surface-container px-2 py-1 w-full sm:w-auto justify-between sm:justify-start">
+                      <button
+                        onClick={() => handleQtyChange(dish.id, -1)}
+                        className="text-primary hover:text-saffron-vibrant px-2 font-bold text-base cursor-pointer"
+                        aria-label="Decrease quantity"
+                      >
+                        -
+                      </button>
+                      <span className="px-3 font-title-md text-sm font-bold text-on-surface min-w-[24px] text-center">
+                        {qty}
+                      </span>
+                      <button
+                        onClick={() => handleQtyChange(dish.id, 1)}
+                        className="text-primary hover:text-saffron-vibrant px-2 font-bold text-base cursor-pointer"
+                        aria-label="Increase quantity"
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <div className="flex items-center gap-2 w-full sm:w-auto flex-1">
+                      <button
+                        onClick={(e) => handleAdd(dish, e)}
+                        className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer active:scale-95 ${
+                          isAdded
+                            ? 'bg-pure-veg-green text-on-tertiary'
+                            : 'bg-primary hover:bg-saffron-vibrant text-on-primary'
+                        }`}
+                      >
+                        <span className="material-symbols-outlined text-[17px]">
+                          {isAdded ? 'done' : 'shopping_bag'}
+                        </span>
+                        <span>{isAdded ? 'Added!' : '+ Bag'}</span>
+                      </button>
+
+                      <button
+                        onClick={(e) => handleDirectOrder(dish, e)}
+                        className="py-2.5 px-3 rounded-xl bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container font-bold text-xs transition-all flex items-center justify-center gap-1 shadow-xs cursor-pointer active:scale-95 whitespace-nowrap"
+                        title="Order Now (Direct Message to 0253 299 5031)"
+                      >
+                        <span className="material-symbols-outlined text-[17px]">send_to_mobile</span>
+                        <span className="hidden xs:inline">Order Now</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               );
             })}
           </div>
         )}
 
-        {/* Quick Phone Order Strip */}
-        <div className="mt-8 sm:mt-space-xl p-4 sm:p-space-lg rounded-2xl bg-surface-container-high flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs border border-outline-variant/30">
-          <div className="flex items-center gap-3 sm:gap-space-md">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0">
-              <span className="material-symbols-outlined text-[20px] sm:text-[24px]">call</span>
+        {/* Catering & Large Family Feasts Strip */}
+        <div className="mt-4 p-6 rounded-2xl bg-peach-tint/60 border border-outline-variant/30 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0">
+              <span className="material-symbols-outlined text-[24px]">room_service</span>
             </div>
-            <div>
-              <h4 className="font-headline-sm text-base sm:text-headline-sm text-on-surface leading-tight font-bold">
-                Prefer Ordering Directly Over Phone?
-              </h4>
-              <p className="font-body-sm text-xs sm:text-body-sm text-on-surface-variant mt-0.5">
-                Our Lawate Nagar order desk is open daily 12:00 PM – 11:00 PM for dine-in bookings, takeaways & doorstep delivery.
-              </p>
+            <div className="flex flex-col">
+              <span className="font-title-lg text-base sm:text-title-lg text-primary font-bold">
+                Catering & Large Family Feasts?
+              </span>
+              <span className="font-body-sm text-xs sm:text-sm text-charcoal-muted">
+                Customized Jain and Sattvic party platters available for gatherings of 15 to 300+ guests.
+              </span>
             </div>
           </div>
-
-          <div className="w-full sm:w-auto">
-            <a
-              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-primary-container text-on-primary-container font-label-lg text-xs sm:text-sm font-bold hover:bg-primary transition-colors flex items-center justify-center gap-2 shadow-md whitespace-nowrap min-h-[44px]"
-              href={`tel:${RESTAURANT_INFO.phoneRaw}`}
-            >
-              <span className="material-symbols-outlined text-[20px]">phone_in_talk</span>
-              <span>Call {RESTAURANT_INFO.phone}</span>
-            </a>
-          </div>
+          <a
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary hover:bg-saffron-vibrant text-on-primary font-bold text-xs sm:text-sm transition-colors whitespace-nowrap shadow-xs"
+            href="tel:+919823045678"
+          >
+            <span className="material-symbols-outlined text-[18px]">call</span>
+            <span>Contact Banquet Desk</span>
+          </a>
         </div>
 
       </div>
 
-      {/* Dish Preview Modal */}
-      <DishModal
-        dish={modalDish}
-        isOpen={Boolean(modalDish)}
-        onClose={() => setModalDish(null)}
-        onAddToCart={onAddToCart}
-        onOrderNow={onOrderNow}
-      />
+      {/* Dish Detailed Preview Modal */}
+      {modalDish && (
+        <DishModal
+          dish={modalDish}
+          isOpen={Boolean(modalDish)}
+          onClose={() => setModalDish(null)}
+          onAddToCart={(dish, jain) => onAddToCart(dish, jain)}
+          onOrderNow={onOrderNow}
+        />
+      )}
     </section>
   );
 };

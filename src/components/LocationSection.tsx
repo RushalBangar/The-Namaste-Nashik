@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 
 export const LocationSection: React.FC = () => {
-  const [copiedCode, setCopiedCode] = useState(false);
   const [copiedAddr, setCopiedAddr] = useState(false);
 
   const copyAddress = () => {
@@ -12,163 +11,173 @@ export const LocationSection: React.FC = () => {
     });
   };
 
-  const copyPlusCode = () => {
-    navigator.clipboard.writeText(RESTAURANT_INFO.plusCode).then(() => {
-      setCopiedCode(true);
-      setTimeout(() => setCopiedCode(false), 2000);
-    });
-  };
-
   return (
-    <section className="w-full py-space-xl bg-surface" id="location-section">
-      <div className="max-w-[1280px] mx-auto px-margin-sm lg:px-margin">
+    <section className="w-full bg-surface-container-low py-16 px-4 md:px-8 border-t border-outline-variant/30" id="location-section">
+      <div className="max-w-7xl mx-auto flex flex-col gap-10">
         
-        <div className="text-center max-w-2xl mx-auto pb-space-lg">
-          <span className="font-label-sm text-label-sm text-primary uppercase tracking-widest font-bold">
-            Centrally Situated in Nashik
-          </span>
-          <h2 className="font-headline-lg text-headline-lg text-on-surface mt-1">
-            Visit Us at Ganesh Gunjan Apartment
-          </h2>
-          <p className="font-body-md text-body-md text-on-surface-variant mt-2">
-            Ample ground floor vehicle parking, hassle-free accessibility, and a cozy dining room in Lawate Nagar.
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div className="flex flex-col gap-2">
+            <span className="font-label-sm text-xs uppercase tracking-widest text-saffron-deep font-bold">
+              Visit The Sanctuary
+            </span>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-headline-lg text-primary font-bold">
+              Centrally Located in Nashik
+            </h2>
+          </div>
+          <p className="font-body-md text-sm sm:text-base text-charcoal-muted max-w-md">
+            Easy ground-floor access with valet parking available for diners on Thatte Nagar Main Road.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
+        {/* Content Bento Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
-          {/* Interactive Details Card (5 cols) */}
-          <div className="lg:col-span-5 p-space-lg lg:p-space-xl rounded-2xl bg-surface-container-low flex flex-col justify-between gap-space-md shadow-xs">
-            <div className="flex flex-col gap-space-sm">
-              <div className="flex items-center gap-space-xs text-primary font-label-md text-label-md font-bold">
-                <span className="material-symbols-outlined text-[20px]">pin_drop</span>
-                <span>Shop No.1, Ganesh Gunjan Apartment</span>
-              </div>
-
-              <h3 className="font-headline-md text-headline-md text-on-surface leading-tight">
-                Lawate Nagar, Nashik, Maharashtra 422002
-              </h3>
-
-              {/* Plus Code */}
-              <div className="p-space-md rounded-xl bg-surface-container-lowest flex items-center justify-between gap-space-xs shadow-xs border border-outline-variant/30">
+          {/* Info Cards Bento (5 cols) */}
+          <div className="lg:col-span-5 flex flex-col justify-between gap-6">
+            <div className="p-6 rounded-2xl bg-cream-card shadow-xs border border-outline-variant/30 flex flex-col gap-4">
+              
+              {/* Address Block */}
+              <div className="flex items-start gap-3">
+                <span className="material-symbols-outlined text-primary text-[28px] mt-0.5 shrink-0">
+                  location_on
+                </span>
                 <div className="flex flex-col">
-                  <span className="font-label-sm text-label-sm text-secondary font-bold uppercase">
-                    Google Maps Plus Code
+                  <span className="font-title-lg text-base sm:text-title-lg text-primary font-bold">
+                    Restaurant Address
                   </span>
-                  <span className="font-headline-sm text-[16px] text-on-surface font-mono">
-                    {RESTAURANT_INFO.plusCode}
+                  <p className="font-body-md text-xs sm:text-sm text-on-surface pt-1 leading-relaxed">
+                    {RESTAURANT_INFO.address}
+                  </p>
+                  <span className="font-label-sm text-xs text-charcoal-muted pt-1">
+                    Landmark: {RESTAURANT_INFO.landmark}
                   </span>
                 </div>
-                <button
-                  className="p-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors cursor-pointer"
-                  onClick={copyPlusCode}
-                  title="Copy Plus Code"
-                >
-                  <span className="material-symbols-outlined text-[18px]">
-                    {copiedCode ? 'done' : 'content_copy'}
-                  </span>
-                </button>
               </div>
 
-              {/* Quick Hours & Parking Cards */}
-              <div className="grid grid-cols-2 gap-space-sm pt-space-xs">
-                <div className="p-3 rounded-lg bg-surface-container-lowest border border-outline-variant/30">
-                  <span className="block font-label-sm text-label-sm text-on-surface-variant">Opening Hours</span>
-                  <span className="font-label-md text-label-md font-bold text-on-surface">11:00 AM – 11:00 PM</span>
-                  <span className="text-[12px] text-tertiary font-semibold block">Open 7 Days a Week</span>
+              {/* Timings */}
+              <div className="pt-2 flex flex-col gap-3 border-t border-surface-container">
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-primary text-[22px] shrink-0">
+                    schedule
+                  </span>
+                  <div>
+                    <span className="font-label-md text-xs sm:text-sm font-bold text-on-surface">
+                      Operating Hours:
+                    </span>
+                    <span className="font-body-sm text-xs sm:text-sm text-charcoal-muted pl-1.5">
+                      {RESTAURANT_INFO.hours}
+                    </span>
+                  </div>
                 </div>
-                <div className="p-3 rounded-lg bg-surface-container-lowest border border-outline-variant/30">
-                  <span className="block font-label-sm text-label-sm text-on-surface-variant">Parking & Access</span>
-                  <span className="font-label-md text-label-md font-bold text-on-surface">Ganesh Gunjan Bays</span>
-                  <span className="text-[12px] text-secondary font-semibold block">Wheelchair Accessible</span>
+
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-primary text-[22px] shrink-0">
+                    restaurant
+                  </span>
+                  <div>
+                    <span className="font-label-md text-xs sm:text-sm font-bold text-on-surface">
+                      Thali Service:
+                    </span>
+                    <span className="font-body-sm text-xs sm:text-sm text-charcoal-muted pl-1.5">
+                      {RESTAURANT_INFO.thaliHours}
+                    </span>
+                  </div>
                 </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-2.5 pt-3 border-t border-surface-container">
+                <a
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-primary hover:bg-saffron-vibrant text-on-primary font-bold text-xs sm:text-sm transition-colors shadow-xs"
+                  href={RESTAURANT_INFO.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="material-symbols-outlined text-[18px]">directions</span>
+                  <span>Get Directions</span>
+                </a>
+
+                <a
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-peach-tint text-primary hover:bg-primary hover:text-on-primary font-bold text-xs sm:text-sm transition-colors border border-primary/20"
+                  href={`tel:${RESTAURANT_INFO.phoneRaw}`}
+                >
+                  <span className="material-symbols-outlined text-[18px]">call</span>
+                  <span>{RESTAURANT_INFO.phone}</span>
+                </a>
+
+                <button
+                  onClick={copyAddress}
+                  className="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high font-semibold text-xs transition-colors cursor-pointer"
+                  title="Copy Address"
+                >
+                  <span className="material-symbols-outlined text-[16px]">
+                    {copiedAddr ? 'check' : 'content_copy'}
+                  </span>
+                  <span>{copiedAddr ? 'Copied' : 'Copy'}</span>
+                </button>
+
+                <a
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-pure-veg-green text-on-tertiary hover:bg-tertiary-container font-bold text-xs sm:text-sm transition-colors shadow-xs"
+                  href={`https://wa.me/${RESTAURANT_INFO.mobilePhoneRaw.replace('+', '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="material-symbols-outlined text-[18px]">chat</span>
+                  <span>WhatsApp</span>
+                </a>
               </div>
             </div>
 
-            {/* Sharing Actions */}
-            <div className="flex flex-col gap-space-xs pt-space-sm border-t border-surface-container">
-              <span className="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">
-                Share & Navigate Instantly
-              </span>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                <a
-                  className="py-2.5 px-3 rounded-lg bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1.5 hover:bg-primary transition-colors text-center"
-                  href={RESTAURANT_INFO.googleMapsUrl}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <span className="material-symbols-outlined text-[16px]">map</span>
-                  <span>Open Maps</span>
-                </a>
-
-                <button
-                  className="py-2.5 px-3 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1.5 hover:bg-surface-container transition-colors shadow-xs cursor-pointer border border-outline-variant/40"
-                  onClick={copyAddress}
-                >
-                  <span className="material-symbols-outlined text-[16px]">
-                    {copiedAddr ? 'check' : 'copy_all'}
-                  </span>
-                  <span>{copiedAddr ? 'Copied!' : 'Copy'}</span>
-                </button>
-
-                <a
-                  className="py-2.5 px-3 rounded-lg bg-surface-container-lowest text-tertiary font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1.5 hover:bg-surface-container transition-colors shadow-xs border border-outline-variant/40"
-                  href={`https://api.whatsapp.com/send?text=Let%27s+dine+at+The+Namastey+Nashik+(Pure+Veg)+at+Shop+No.1,+Ganesh+Gunjan+Apartment,+Lawate+Nagar,+Nashik+422002.+Call:+02532995031`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="material-symbols-outlined text-[16px]">chat</span>
-                  <span>WhatsApp</span>
-                </a>
-
-                <a
-                  className="py-2.5 px-3 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1.5 hover:bg-surface-container transition-colors shadow-xs border border-outline-variant/40"
-                  href={`sms:?body=The Namastey Nashik (Pure Veg), Shop 1, Ganesh Gunjan, Lawate Nagar, Nashik. Phone: 0253 299 5031`}
-                >
-                  <span className="material-symbols-outlined text-[16px]">sms</span>
-                  <span>SMS</span>
-                </a>
+            {/* Valet & Amenities Mini Bento */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 rounded-xl bg-cream-card shadow-xs border border-outline-variant/30 flex items-center gap-3">
+                <span className="material-symbols-outlined text-primary text-[24px]">local_parking</span>
+                <div className="flex flex-col">
+                  <span className="font-label-md text-xs sm:text-sm font-bold text-on-surface">Valet Parking</span>
+                  <span className="font-body-sm text-[11px] sm:text-xs text-charcoal-muted">Complimentary</span>
+                </div>
+              </div>
+              
+              <div className="p-4 rounded-xl bg-cream-card shadow-xs border border-outline-variant/30 flex items-center gap-3">
+                <span className="material-symbols-outlined text-pure-veg-green text-[24px]">wifi</span>
+                <div className="flex flex-col">
+                  <span className="font-label-md text-xs sm:text-sm font-bold text-on-surface">High Speed Wi-Fi</span>
+                  <span className="font-body-sm text-[11px] sm:text-xs text-charcoal-muted">For Guests</span>
+                </div>
               </div>
             </div>
 
           </div>
 
-          {/* Stylized Map View (7 cols) */}
-          <div className="lg:col-span-7 rounded-2xl overflow-hidden shadow-md relative min-h-[380px] group border border-outline-variant/30">
+          {/* Interactive Map View (7 cols) */}
+          <div className="lg:col-span-7 rounded-2xl overflow-hidden shadow-md flex flex-col border border-outline-variant/30 min-h-[360px] relative">
             <div
-              className="w-full h-full bg-cover bg-center min-h-[380px] transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-80 lg:h-full min-h-[360px] bg-cover bg-center relative"
               style={{ backgroundImage: `url('${RESTAURANT_INFO.mapImageUrl}')` }}
-            ></div>
-
-            {/* Gradient Scrim */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-
-            {/* Floating Map Marker Overlay Badge */}
-            <div className="absolute bottom-4 left-4 p-space-md rounded-xl bg-surface-container-lowest/95 backdrop-blur-md shadow-lg max-w-sm flex items-start gap-space-sm border border-outline-variant/30">
-              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 mt-0.5">
-                <span className="material-symbols-outlined text-[20px]">restaurant</span>
-              </div>
-              <div>
-                <div className="flex items-center gap-1">
-                  <h4 className="font-headline-sm text-[16px] text-on-surface leading-snug">
+            >
+              <div className="absolute bottom-4 left-4 p-3.5 rounded-xl bg-surface/90 backdrop-blur-md shadow-md text-on-surface flex items-center gap-2 border border-outline-variant/20">
+                <span className="material-symbols-outlined text-primary text-[22px]">pin_drop</span>
+                <div className="flex flex-col">
+                  <span className="font-label-sm text-xs font-bold text-on-surface">
                     The Namastey Nashik
-                  </h4>
-                  <span className="w-2 h-2 rounded-full bg-tertiary ml-1" title="Pure Veg"></span>
-                </div>
-                <p className="font-body-sm text-[13px] text-on-surface-variant">
-                  Ganesh Gunjan Apt, Lawate Nagar
-                </p>
-                <div className="flex items-center gap-2 mt-1">
-                  <span className="font-label-sm text-[11px] text-tertiary font-bold bg-tertiary-fixed/30 px-1.5 py-0.5 rounded">
-                    Drive-Thru Bay Open
                   </span>
-                  <span className="font-label-sm text-[11px] text-secondary font-bold">
-                    11 AM - 11 PM
+                  <span className="text-[11px] text-charcoal-muted">
+                    Thatte Nagar & Lawate Nagar, Nashik
                   </span>
                 </div>
               </div>
-            </div>
 
+              <a
+                href={RESTAURANT_INFO.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-4 right-4 px-3 py-1.5 rounded-lg bg-surface/90 backdrop-blur-md text-primary font-bold text-xs shadow-xs flex items-center gap-1 hover:bg-primary hover:text-on-primary transition-all"
+              >
+                <span>View Full Map</span>
+                <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+              </a>
+            </div>
           </div>
 
         </div>

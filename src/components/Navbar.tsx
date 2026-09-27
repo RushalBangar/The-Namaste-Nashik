@@ -34,10 +34,13 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart, onOpenRes
 
   const navLinks = [
     { id: 'overview', label: 'Home', href: '#overview' },
-    { id: 'signature-menu', label: 'Menu', href: '#signature-menu' },
-    { id: 'services', label: 'Dining Experience', href: '#services' },
+    { id: 'our-story', label: 'Our Story', href: '#services' },
+    { id: 'menu', label: 'Menu', href: '#menu-explorer' },
+    { id: 'signature-dishes', label: 'Signature Dishes', href: '#menu-explorer' },
+    { id: 'dining-experience', label: 'Dining Experience', href: '#services' },
     { id: 'reviews', label: 'Reviews', href: '#reviews' },
-    { id: 'location-section', label: 'Location & Hours', href: '#location-section' },
+    { id: 'location-section', label: 'Contact & Location', href: '#location-section' },
+    { id: 'faqs', label: 'FAQs', href: '#faqs' },
   ];
 
   return (
@@ -46,7 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart, onOpenRes
         {/* Top Luxury Announcement Ribbon */}
         <div className="bg-saffron-deep text-on-primary py-1.5 px-3 text-center font-label-sm text-[11px] sm:text-xs tracking-wider uppercase flex items-center justify-center gap-2 border-b border-primary/20">
           <span className="material-symbols-outlined text-[14px]">hotel_class</span>
-          <span className="truncate">Pure Veg Gastronomy • 100% Pure Ghee & Fresh Farm Produce • Call: {RESTAURANT_INFO.phone}</span>
+          <span className="truncate">Pure Veg Gastronomy • 100% Pure Ghee & Fresh Farm Produce • Call for Table Reservations: +91 98230 45678</span>
           <span className="hidden md:inline">•</span>
           <a href={`tel:${RESTAURANT_INFO.phoneRaw}`} className="hidden md:inline font-bold underline hover:text-peach-tint">
             {RESTAURANT_INFO.phone}

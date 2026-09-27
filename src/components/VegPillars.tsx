@@ -2,91 +2,75 @@ import React from 'react';
 
 export const VegPillars: React.FC = () => {
   return (
-    <section className="w-full py-space-xl bg-surface border-b border-surface-container-low">
-      <div className="max-w-[1280px] mx-auto px-margin-sm lg:px-margin">
+    <section className="w-full bg-surface-container-low py-12 px-4 md:px-8 border-y border-outline-variant/30">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
-        <div className="text-center max-w-2xl mx-auto pb-space-lg">
-          <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">
-            Sacred Purity & Conscious Service
-          </span>
-          <h2 className="font-headline-lg text-headline-lg text-on-surface mt-1">
-            Why Nashik Trusts Our Kitchen
-          </h2>
-          <p className="font-body-md text-body-md text-on-surface-variant mt-2">
-            Every grain of wheat, cold-pressed oil, and aromatic clove is sourced with reverence and prepared under meticulous satvik supervision.
-          </p>
+        {/* Card 1 */}
+        <div className="p-6 rounded-2xl bg-cream-card shadow-xs flex flex-col gap-3 transition-transform hover:-translate-y-1 border border-outline-variant/20">
+          <div className="w-12 h-12 rounded-xl bg-peach-tint flex items-center justify-center text-primary">
+            <span className="material-symbols-outlined text-[26px]">eco</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <h2 className="font-title-lg text-lg font-bold text-primary">100% Pure Veg Kitchen</h2>
+            <p className="font-body-sm text-sm text-charcoal-muted leading-relaxed">
+              Zero cross-contamination with dedicated chef stations, pure ingredients, and separate Vedic prep areas.
+            </p>
+          </div>
+          <div className="pt-2 text-pure-veg-green font-label-sm text-xs font-bold flex items-center gap-1.5 mt-auto">
+            <span className="material-symbols-outlined text-[16px]">check_circle</span>
+            <span>Strictly Certified Vegetarian</span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
-          
-          {/* Pillar 1 */}
-          <div className="p-space-lg rounded-xl bg-surface-container-low hover:bg-surface-container transition-all duration-200 flex flex-col gap-space-sm group shadow-xs">
-            <div className="w-12 h-12 rounded-lg bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed group-hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined text-[28px]">eco</span>
-            </div>
-            <h3 className="font-headline-sm text-headline-sm text-on-surface">
-              100% Pure Veg Kitchen
-            </h3>
-            <p className="font-body-sm text-body-sm text-on-surface-variant">
-              Zero animal products or cross-contamination. Absolute purity guaranteed with daily holy kitchen purification and non-bone-china serving ware.
-            </p>
-            <span className="font-label-sm text-label-sm text-tertiary font-bold mt-auto flex items-center gap-1">
-              <span>Verified Green Kitchen</span>
-              <span className="material-symbols-outlined text-[16px]">verified</span>
-            </span>
+        {/* Card 2 */}
+        <div className="p-6 rounded-2xl bg-cream-card shadow-xs flex flex-col gap-3 transition-transform hover:-translate-y-1 border border-outline-variant/20">
+          <div className="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container">
+            <span className="material-symbols-outlined text-[26px]">history_edu</span>
           </div>
-
-          {/* Pillar 2 */}
-          <div className="p-space-lg rounded-xl bg-surface-container-low hover:bg-surface-container transition-all duration-200 flex flex-col gap-space-sm group shadow-xs">
-            <div className="w-12 h-12 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed group-hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined text-[28px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-            </div>
-            <h3 className="font-headline-sm text-headline-sm text-on-surface">
-              4.6 Star Diners' Choice
-            </h3>
-            <p className="font-body-sm text-body-sm text-on-surface-variant">
-              Over 2,214 authentic reviews on Google reflect our commitment to hot bhakris, fragrant rassa, and unmatched family memories.
+          <div className="flex flex-col gap-1">
+            <h2 className="font-title-lg text-lg font-bold text-primary">25+ Years Legacy of Taste</h2>
+            <p className="font-body-sm text-sm text-charcoal-muted leading-relaxed">
+              Traditional heirloom recipes perfected over decades by regional master khansamas and legacy cooks.
             </p>
-            <span className="font-label-sm text-label-sm text-secondary font-bold mt-auto flex items-center gap-1">
-              <span>2,214+ Happy Reviews</span>
-              <span className="material-symbols-outlined text-[16px]">thumb_up</span>
-            </span>
           </div>
+          <div className="pt-2 text-primary font-label-sm text-xs font-bold flex items-center gap-1.5 mt-auto">
+            <span className="material-symbols-outlined text-[16px]">award_star</span>
+            <span>Time-Honored Flavors</span>
+          </div>
+        </div>
 
-          {/* Pillar 3 */}
-          <div className="p-space-lg rounded-xl bg-surface-container-low hover:bg-surface-container transition-all duration-200 flex flex-col gap-space-sm group shadow-xs">
-            <div className="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed group-hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined text-[28px]">diversity_3</span>
-            </div>
-            <h3 className="font-headline-sm text-headline-sm text-on-surface">
-              Inclusive & Women-Led
-            </h3>
-            <p className="font-body-sm text-body-sm text-on-surface-variant">
-              Guided by passionate female chefs and restaurateurs. Unequivocally welcoming and safe for LGBTQ+ diners, solo travelers, and elders.
+        {/* Card 3 */}
+        <div className="p-6 rounded-2xl bg-cream-card shadow-xs flex flex-col gap-3 transition-transform hover:-translate-y-1 border border-outline-variant/20">
+          <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+            <span className="material-symbols-outlined text-[26px]">psychiatry</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <h2 className="font-title-lg text-lg font-bold text-primary">Authentic Regional Spices</h2>
+            <p className="font-body-sm text-sm text-charcoal-muted leading-relaxed">
+              Sourced directly from local Nashik farmers, Lasalgaon farms, and royal spice hubs of North India.
             </p>
-            <span className="font-label-sm text-label-sm text-primary font-bold mt-auto flex items-center gap-1">
-              <span>Atithi Devo Bhava</span>
-              <span className="material-symbols-outlined text-[16px]">favorite</span>
-            </span>
           </div>
+          <div className="pt-2 text-primary font-label-sm text-xs font-bold flex items-center gap-1.5 mt-auto">
+            <span className="material-symbols-outlined text-[16px]">local_florist</span>
+            <span>Slow Pounded Spices</span>
+          </div>
+        </div>
 
-          {/* Pillar 4 */}
-          <div className="p-space-lg rounded-xl bg-surface-container-low hover:bg-surface-container transition-all duration-200 flex flex-col gap-space-sm group shadow-xs">
-            <div className="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined text-[28px]">sanitizer</span>
-            </div>
-            <h3 className="font-headline-sm text-headline-sm text-on-surface">
-              Thermal Sanitized Prep
-            </h3>
-            <p className="font-body-sm text-body-sm text-on-surface-variant">
-              Food-grade silver foil thermal packing, UV-treated water for cooking, double-washed vegetables, and contactless pickup bays.
+        {/* Card 4 */}
+        <div className="p-6 rounded-2xl bg-cream-card shadow-xs flex flex-col gap-3 transition-transform hover:-translate-y-1 border border-outline-variant/20">
+          <div className="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+            <span className="material-symbols-outlined text-[26px]">health_and_safety</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <h2 className="font-title-lg text-lg font-bold text-primary">Highest Sanitization Standards</h2>
+            <p className="font-body-sm text-sm text-charcoal-muted leading-relaxed">
+              Hospital-grade hygiene protocols, RO-filtered cooking water, and a glass-enclosed viewing kitchen.
             </p>
-            <span className="font-label-sm text-label-sm text-on-surface-variant font-bold mt-auto flex items-center gap-1">
-              <span>Hospital-Grade Hygiene</span>
-              <span className="material-symbols-outlined text-[16px]">shield</span>
-            </span>
           </div>
-
+          <div className="pt-2 text-pure-veg-green font-label-sm text-xs font-bold flex items-center gap-1.5 mt-auto">
+            <span className="material-symbols-outlined text-[16px]">verified_user</span>
+            <span>Open Kitchen Transparency</span>
+          </div>
         </div>
 
       </div>
