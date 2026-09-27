@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface RestaurantLogoProps {
   className?: string;
@@ -11,135 +11,132 @@ export const RestaurantLogo: React.FC<RestaurantLogoProps> = ({
   size = 'md',
   showSubtitle = true,
 }) => {
-  const [imgError, setImgError] = useState(false);
-
-  // Dimension classes
+  // Dimension classes for the logo mark
   const sizeMap = {
     sm: 'h-8 w-8',
-    md: 'h-10 w-10 sm:h-12 sm:w-12',
+    md: 'h-11 w-11 sm:h-12 sm:w-12',
     lg: 'h-14 w-14 sm:h-16 sm:w-16',
     xl: 'h-20 w-20 sm:h-24 sm:w-24',
   };
 
   const imgDimensions = sizeMap[size];
 
-  if (!imgError) {
-    return (
-      <div className={`inline-flex items-center gap-2.5 ${className}`}>
-        <img
-          src="/logo.png"
-          alt="The Namastey Nashik - By Bhatukli (नमस्ते नाशिक)"
-          className={`${imgDimensions} object-contain rounded-full shadow-xs border border-teal-600/20 bg-white p-0.5 shrink-0 transition-transform duration-300 hover:scale-105`}
-          onError={() => setImgError(true)}
-          referrerPolicy="no-referrer"
-        />
-        {showSubtitle && (
-          <div className="flex flex-col min-w-0">
-            <div className="flex items-center gap-1.5">
-              <span className="font-display text-base sm:text-lg font-bold text-primary tracking-tight leading-none truncate">
-                The Namastey Nashik
-              </span>
-              <span className="inline-flex items-center justify-center w-3.5 h-3.5 border border-pure-veg-green rounded-[2px] p-[1.5px] shrink-0" title="100% Pure Vegetarian">
-                <span className="w-1.5 h-1.5 rounded-full bg-pure-veg-green"></span>
-              </span>
-            </div>
-            <span className="font-label-sm text-[10px] sm:text-xs text-charcoal-muted tracking-wider uppercase font-semibold mt-0.5 truncate">
-              नमस्ते नाशिक · By Bhatukli
-            </span>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  // High fidelity vector SVG Fallback matching the uploaded emblem exactly
   return (
-    <div className={`inline-flex items-center gap-2.5 ${className}`}>
-      <svg
-        viewBox="0 0 400 400"
-        className={`${imgDimensions} shrink-0`}
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-label="Namastey Nashik Logo"
-      >
-        {/* Outer and inner concentric circles */}
-        <circle cx="200" cy="200" r="192" fill="#FFFFFF" stroke="#0E747F" strokeWidth="8" />
-        <circle cx="200" cy="200" r="180" fill="none" stroke="#D1D5DB" strokeWidth="3" />
-
-        {/* Hindi Devanagari 'नमस्ते' */}
-        <text
-          x="75"
-          y="180"
-          fontFamily="sans-serif"
-          fontWeight="900"
-          fontSize="56"
-          fill="#111827"
-          letterSpacing="1"
+    <div className={`inline-flex items-center gap-2.5 sm:gap-3.5 ${className}`}>
+      {/* Official Circular Logo Emblem (Exact Vector Recreation of Bhatukli Logo) */}
+      <div className="relative shrink-0 transition-transform duration-300 group-hover:scale-105">
+        <svg
+          viewBox="0 0 450 450"
+          className={`${imgDimensions} shrink-0 drop-shadow-xs`}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-label="The Namastey Nashik - By Bhatukli Official Emblem"
         >
-          नमस्ते
-        </text>
+          {/* Circular Badge Canvas */}
+          <circle cx="225" cy="225" r="220" fill="#FFFFFF" />
+          
+          {/* Outer Teal Ring */}
+          <circle cx="225" cy="225" r="215" fill="none" stroke="#0D828A" strokeWidth="8" />
+          
+          {/* Inner Thin Silver / Grey Ring */}
+          <circle cx="225" cy="225" r="204" fill="none" stroke="#94A3B8" strokeWidth="3" />
 
-        {/* English 'NASHIK' */}
-        <text
-          x="72"
-          y="250"
-          fontFamily="sans-serif"
-          fontWeight="800"
-          fontSize="68"
-          fill="#0E747F"
-          letterSpacing="4"
-        >
-          NASH
-        </text>
+          {/* Hindi Devanagari Wordmark: नमस्ते */}
+          <g fill="#18181B">
+            <text
+              x="75"
+              y="230"
+              fontFamily="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Noto Sans Devanagari', 'Mukta', sans-serif"
+              fontWeight="900"
+              fontSize="48"
+              letterSpacing="1"
+            >
+              नमस्ते
+            </text>
+          </g>
 
-        <text
-          x="300"
-          y="250"
-          fontFamily="sans-serif"
-          fontWeight="800"
-          fontSize="68"
-          fill="#0E747F"
-        >
-          K
-        </text>
+          {/* Solid Teal Circle with Spoon Silhouette */}
+          <g>
+            {/* The circular plate behind spoon */}
+            <circle cx="305" cy="160" r="56" fill="#0D828A" />
 
-        {/* Right Spoon / Fork Culinary Emblem */}
-        <circle cx="265" cy="165" r="50" fill="#0E747F" />
-        {/* Spoon Head Cutout */}
-        <path
-          d="M265 132 C255 132 248 144 248 160 C248 174 256 186 265 190 C274 186 282 174 282 160 C282 144 275 132 265 132 Z"
-          fill="#FFFFFF"
-        />
-        {/* Center Vertical Handle / Fork Stems */}
-        <rect x="260" y="190" width="4" height="75" rx="2" fill="#0E747F" />
-        <rect x="268" y="190" width="4" height="75" rx="2" fill="#0E747F" />
+            {/* Spoon bowl in white (negative space) */}
+            <path
+              d="M305 125 C317 125 324 139 324 156 C324 175 316 190 308 198 L308 216 L302 216 L302 198 C294 190 286 175 286 156 C286 139 293 125 305 125 Z"
+              fill="#FFFFFF"
+            />
+            {/* Fine central inner line in spoon */}
+            <line x1="305" y1="128" x2="305" y2="192" stroke="#0D828A" strokeWidth="3" strokeLinecap="round" />
+          </g>
 
-        {/* Subtitle '- BY BHATUKLI -' */}
-        <text
-          x="200"
-          y="285"
-          textAnchor="middle"
-          fontFamily="sans-serif"
-          fontWeight="600"
-          fontSize="18"
-          fill="#6B7280"
-          letterSpacing="4"
-        >
-          - BY BHATUKLI -
-        </text>
-      </svg>
+          {/* English Wordmark: NASH */}
+          <g fill="#0D828A">
+            <text
+              x="76"
+              y="290"
+              fontFamily="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Arial Black', sans-serif"
+              fontWeight="900"
+              fontSize="60"
+              letterSpacing="2.5"
+            >
+              NASH
+            </text>
+          </g>
 
+          {/* Stylized 'I' as Spoon/Fork Stem cutting through */}
+          <g fill="#0D828A">
+            {/* Left prong of stem */}
+            <rect x="296" y="216" width="6" height="90" rx="3" fill="#0D828A" />
+            {/* Right prong of stem */}
+            <rect x="307" y="216" width="6" height="90" rx="3" fill="#0D828A" />
+          </g>
+
+          {/* English Letter: K */}
+          <g fill="#0D828A">
+            <text
+              x="320"
+              y="290"
+              fontFamily="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Arial Black', sans-serif"
+              fontWeight="900"
+              fontSize="60"
+              letterSpacing="2.5"
+            >
+              K
+            </text>
+          </g>
+
+          {/* Subtitle: - BY BHATUKLI - */}
+          <g fill="#82929E">
+            <text
+              x="225"
+              y="325"
+              textAnchor="middle"
+              fontFamily="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', sans-serif"
+              fontWeight="700"
+              fontSize="16.5"
+              letterSpacing="3.5"
+            >
+              - BY BHATUKLI -
+            </text>
+          </g>
+        </svg>
+      </div>
+
+      {/* Brand Title & Sub-branding beside Emblem */}
       {showSubtitle && (
         <div className="flex flex-col min-w-0">
           <div className="flex items-center gap-1.5">
-            <span className="font-display text-base sm:text-lg font-bold text-primary tracking-tight leading-none truncate">
+            <span className="font-display text-base sm:text-[17px] font-bold text-primary tracking-tight leading-none truncate">
               The Namastey Nashik
             </span>
-            <span className="inline-flex items-center justify-center w-3.5 h-3.5 border border-pure-veg-green rounded-[2px] p-[1.5px] shrink-0">
+            <span
+              className="inline-flex items-center justify-center w-3.5 h-3.5 border border-pure-veg-green rounded-[2px] p-[1.5px] shrink-0"
+              title="100% Pure Vegetarian"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-pure-veg-green"></span>
             </span>
           </div>
-          <span className="font-label-sm text-[10px] sm:text-xs text-charcoal-muted tracking-wider uppercase font-semibold mt-0.5 truncate">
+          <span className="font-label-sm text-[10px] sm:text-[11px] text-charcoal-muted tracking-wider uppercase font-semibold mt-1 truncate">
             नमस्ते नाशिक · By Bhatukli
           </span>
         </div>

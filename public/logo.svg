@@ -1,0 +1,70 @@
+<svg viewBox="0 0 450 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circular Badge Canvas -->
+  <circle cx="225" cy="225" r="220" fill="#FFFFFF" />
+  
+  <!-- Outer Teal Ring -->
+  <circle cx="225" cy="225" r="215" fill="none" stroke="#0D828A" stroke-width="8" />
+  
+  <!-- Inner Thin Silver / Grey Ring -->
+  <circle cx="225" cy="225" r="204" fill="none" stroke="#94A3B8" stroke-width="3" />
+
+  <!-- Hindi Devanagari Wordmark: नमस्ते -->
+  <text
+    x="75"
+    y="230"
+    font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Noto Sans Devanagari', 'Mukta', sans-serif"
+    font-weight="900"
+    font-size="48"
+    letter-spacing="1"
+    fill="#18181B"
+  >नमस्ते</text>
+
+  <!-- Solid Teal Circle with Spoon Silhouette -->
+  <circle cx="305" cy="160" r="56" fill="#0D828A" />
+
+  <!-- Spoon bowl in white -->
+  <path
+    d="M305 125 C317 125 324 139 324 156 C324 175 316 190 308 198 L308 216 L302 216 L302 198 C294 190 286 175 286 156 C286 139 293 125 305 125 Z"
+    fill="#FFFFFF"
+  />
+  <!-- Fine central inner line in spoon -->
+  <line x1="305" y1="128" x2="305" y2="192" stroke="#0D828A" stroke-width="3" stroke-linecap="round" />
+
+  <!-- English Wordmark: NASH -->
+  <text
+    x="76"
+    y="290"
+    font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Arial Black', sans-serif"
+    font-weight="900"
+    font-size="60"
+    letter-spacing="2.5"
+    fill="#0D828A"
+  >NASH</text>
+
+  <!-- Stylized 'I' as Spoon/Fork Stem cutting through -->
+  <rect x="296" y="216" width="6" height="90" rx="3" fill="#0D828A" />
+  <rect x="307" y="216" width="6" height="90" rx="3" fill="#0D828A" />
+
+  <!-- English Letter: K -->
+  <text
+    x="320"
+    y="290"
+    font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Arial Black', sans-serif"
+    font-weight="900"
+    font-size="60"
+    letter-spacing="2.5"
+    fill="#0D828A"
+  >K</text>
+
+  <!-- Subtitle: - BY BHATUKLI - -->
+  <text
+    x="225"
+    y="325"
+    text-anchor="middle"
+    font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', sans-serif"
+    font-weight="700"
+    font-size="16.5"
+    letter-spacing="3.5"
+    fill="#82929E"
+  >- BY BHATUKLI -</text>
+</svg>
