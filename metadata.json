@@ -1,0 +1,7 @@
+{
+  "name": "The Namastey Nashik | Pure Veg Restaurant",
+  "description": "100% Pure Vegetarian Dining in Lawate Nagar, Nashik. Proudly Women-Owned & LGBTQ+ Welcoming. Authentic regional flavors, dine-in, drive-through & contactless delivery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
