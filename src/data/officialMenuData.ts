@@ -35,7 +35,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     price: 339,
     tag: "Chef's Signature",
     tagline: 'Served in Tender Coconut • Authentic House Specialty',
-    description: 'Our Chef special preparation made with fresh coconut water and served in fresh coconut.',
+    description: 'Our Chef special preparation made with fresh coconut water, grated tender malai, and served in fresh coconut.',
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
@@ -53,7 +53,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'chef-03',
@@ -67,7 +67,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'chef-04',
@@ -81,7 +81,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'chef-05',
@@ -95,7 +95,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'chef-06',
@@ -109,7 +109,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'chef-07',
@@ -123,7 +123,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Lula_kebab_2.jpg/960px-Lula_kebab_2.jpg',
   },
   {
     id: 'chef-08',
@@ -137,7 +137,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'chef-09',
@@ -151,7 +151,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Aloo_Tikki_served_with_chutneys.jpg/960px-Aloo_Tikki_served_with_chutneys.jpg',
   },
   {
     id: 'chef-10',
@@ -165,7 +165,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'chef-11',
@@ -179,7 +179,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'chef-12',
@@ -193,7 +193,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'chef-13',
@@ -207,7 +207,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Shahi_panner.jpg/960px-Shahi_panner.jpg',
   },
   {
     id: 'chef-14',
@@ -221,7 +221,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'chef-15',
@@ -235,7 +235,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'chef-16',
@@ -249,7 +249,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Shahi_panner.jpg/960px-Shahi_panner.jpg',
   },
 
   // ==========================================
@@ -267,7 +267,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Lula_kebab_2.jpg/960px-Lula_kebab_2.jpg',
   },
   {
     id: 'tan-02',
@@ -281,7 +281,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Lula_kebab_2.jpg/960px-Lula_kebab_2.jpg',
   },
   {
     id: 'tan-03',
@@ -295,7 +295,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'tan-04',
@@ -309,7 +309,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Lula_kebab_2.jpg/960px-Lula_kebab_2.jpg',
   },
   {
     id: 'tan-05',
@@ -323,7 +323,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Lula_kebab_2.jpg/960px-Lula_kebab_2.jpg',
   },
   {
     id: 'tan-06',
@@ -337,7 +337,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Lula_kebab_2.jpg/960px-Lula_kebab_2.jpg',
   },
   {
     id: 'tan-07',
@@ -351,7 +351,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'tan-08',
@@ -365,7 +365,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Lula_kebab_2.jpg/960px-Lula_kebab_2.jpg',
   },
   {
     id: 'tan-09',
@@ -379,7 +379,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Aloo_Tikki_served_with_chutneys.jpg/960px-Aloo_Tikki_served_with_chutneys.jpg',
   },
   {
     id: 'tan-10',
@@ -393,7 +393,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'tan-11',
@@ -407,7 +407,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'tan-12',
@@ -421,7 +421,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'tan-13',
@@ -435,7 +435,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Aloo_Tikki_served_with_chutneys.jpg/960px-Aloo_Tikki_served_with_chutneys.jpg',
   },
   {
     id: 'tan-14',
@@ -449,7 +449,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Lula_kebab_2.jpg/960px-Lula_kebab_2.jpg',
   },
   {
     id: 'tan-15',
@@ -463,7 +463,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'tan-16',
@@ -477,7 +477,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'tan-17',
@@ -491,7 +491,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'tan-18',
@@ -505,7 +505,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Lula_kebab_2.jpg/960px-Lula_kebab_2.jpg',
   },
 
   // ==========================================
@@ -523,7 +523,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Kolhapuri_Misal_Pav.jpg/960px-Kolhapuri_Misal_Pav.jpg',
   },
   {
     id: 'mah-02',
@@ -537,7 +537,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Kolhapuri_Misal_Pav.jpg/960px-Kolhapuri_Misal_Pav.jpg',
   },
   {
     id: 'mah-03',
@@ -551,7 +551,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Kolhapuri_Misal_Pav.jpg/960px-Kolhapuri_Misal_Pav.jpg',
   },
   {
     id: 'mah-04',
@@ -565,7 +565,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'mah-05',
@@ -579,7 +579,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'mah-06',
@@ -593,7 +593,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Baigan_Bharta_from_Nagpur.JPG/960px-Baigan_Bharta_from_Nagpur.JPG',
   },
 
   // ==========================================
@@ -611,7 +611,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Matar_paneer_dish.jpg/960px-Matar_paneer_dish.jpg',
   },
   {
     id: 'ind-02',
@@ -625,7 +625,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Chana_masala.jpg/960px-Chana_masala.jpg',
   },
   {
     id: 'ind-03',
@@ -639,7 +639,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-04',
@@ -653,7 +653,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'ind-05',
@@ -667,7 +667,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-06',
@@ -681,7 +681,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'ind-07',
@@ -695,7 +695,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'ind-08',
@@ -709,7 +709,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Matar_paneer_dish.jpg/960px-Matar_paneer_dish.jpg',
   },
   {
     id: 'ind-09',
@@ -723,7 +723,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-10',
@@ -737,7 +737,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'ind-11',
@@ -751,7 +751,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-12',
@@ -765,7 +765,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-13',
@@ -779,7 +779,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-14',
@@ -793,7 +793,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Kolhapuri_Misal_Pav.jpg/960px-Kolhapuri_Misal_Pav.jpg',
   },
   {
     id: 'ind-15',
@@ -807,7 +807,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'ind-16',
@@ -821,7 +821,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-17',
@@ -835,7 +835,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-18',
@@ -849,7 +849,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-19',
@@ -863,7 +863,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-20',
@@ -877,7 +877,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-21',
@@ -891,7 +891,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'ind-22',
@@ -905,7 +905,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-23',
@@ -919,7 +919,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-24',
@@ -933,7 +933,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-25',
@@ -947,7 +947,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Shahi_panner.jpg/960px-Shahi_panner.jpg',
   },
   {
     id: 'ind-26',
@@ -961,7 +961,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Kadai_Paneer-Delhi-12.jpg',
   },
   {
     id: 'ind-27',
@@ -975,7 +975,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Shahi_panner.jpg/960px-Shahi_panner.jpg',
   },
   {
     id: 'ind-28',
@@ -989,7 +989,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Shahi_panner.jpg/960px-Shahi_panner.jpg',
   },
 
   // ==========================================
@@ -1007,7 +1007,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'dal-02',
@@ -1021,7 +1021,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'dal-03',
@@ -1035,7 +1035,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Kolhapuri_Misal_Pav.jpg/960px-Kolhapuri_Misal_Pav.jpg',
   },
   {
     id: 'dal-04',
@@ -1049,7 +1049,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'brd-01',
@@ -1063,7 +1063,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/2020-05-08_19_34_28_Chapati_being_made_in_a_pan_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/960px-2020-05-08_19_34_28_Chapati_being_made_in_a_pan_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg',
   },
   {
     id: 'brd-02',
@@ -1077,7 +1077,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Annapurna_Naan.jpg/960px-Annapurna_Naan.jpg',
   },
   {
     id: 'brd-03',
@@ -1091,7 +1091,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Annapurna_Naan.jpg/960px-Annapurna_Naan.jpg',
   },
   {
     id: 'brd-04',
@@ -1105,7 +1105,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Triangle_paratha_%28cropped%29.JPG/960px-Triangle_paratha_%28cropped%29.JPG',
   },
   {
     id: 'brd-05',
@@ -1119,7 +1119,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Triangle_paratha_%28cropped%29.JPG/960px-Triangle_paratha_%28cropped%29.JPG',
   },
   {
     id: 'brd-06',
@@ -1133,7 +1133,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/2020-05-08_19_34_28_Chapati_being_made_in_a_pan_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/960px-2020-05-08_19_34_28_Chapati_being_made_in_a_pan_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg',
   },
   {
     id: 'brd-07',
@@ -1147,7 +1147,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Triangle_paratha_%28cropped%29.JPG/960px-Triangle_paratha_%28cropped%29.JPG',
   },
   {
     id: 'brd-08',
@@ -1161,7 +1161,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/2020-05-08_19_34_28_Chapati_being_made_in_a_pan_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/960px-2020-05-08_19_34_28_Chapati_being_made_in_a_pan_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg',
   },
 
   // ==========================================
@@ -1179,7 +1179,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/07/Khyma_and_Basmati_rice.jpg',
   },
   {
     id: 'ric-02',
@@ -1193,7 +1193,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/07/Khyma_and_Basmati_rice.jpg',
   },
   {
     id: 'ric-03',
@@ -1207,7 +1207,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/07/Khyma_and_Basmati_rice.jpg',
   },
   {
     id: 'ric-04',
@@ -1221,7 +1221,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'ric-05',
@@ -1235,7 +1235,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'ric-06',
@@ -1249,7 +1249,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'ric-07',
@@ -1263,7 +1263,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'ric-08',
@@ -1277,7 +1277,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Dall_Khichdi.jpg',
   },
   {
     id: 'ric-09',
@@ -1291,7 +1291,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Dall_Khichdi.jpg',
   },
   {
     id: 'ric-10',
@@ -1305,7 +1305,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Dall_Khichdi.jpg',
   },
   {
     id: 'ric-11',
@@ -1379,7 +1379,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Chicken_Manchurian_%28Hyderabad_Style%29_%2811960049916%29.jpg/960px-Chicken_Manchurian_%28Hyderabad_Style%29_%2811960049916%29.jpg',
   },
   {
     id: 'chn-02',
@@ -1393,7 +1393,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Chicken_Manchurian_%28Hyderabad_Style%29_%2811960049916%29.jpg/960px-Chicken_Manchurian_%28Hyderabad_Style%29_%2811960049916%29.jpg',
   },
   {
     id: 'chn-03',
@@ -1407,7 +1407,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Onion_pakora_-_a.jpg/960px-Onion_pakora_-_a.jpg',
   },
   {
     id: 'chn-04',
@@ -1421,7 +1421,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Chicken_Manchurian_%28Hyderabad_Style%29_%2811960049916%29.jpg/960px-Chicken_Manchurian_%28Hyderabad_Style%29_%2811960049916%29.jpg',
   },
   {
     id: 'chn-05',
@@ -1435,7 +1435,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Onion_pakora_-_a.jpg/960px-Onion_pakora_-_a.jpg',
   },
   {
     id: 'chn-06',
@@ -1449,7 +1449,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Chicken_Manchurian_%28Hyderabad_Style%29_%2811960049916%29.jpg/960px-Chicken_Manchurian_%28Hyderabad_Style%29_%2811960049916%29.jpg',
   },
   {
     id: 'chn-07',
@@ -1505,7 +1505,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'chn-11',
@@ -1519,7 +1519,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800&auto=format&fit=crop&q=80',
   },
 
   // ==========================================
@@ -1537,7 +1537,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Ping_SJ_hot_%26_sour_soup.JPG/960px-Ping_SJ_hot_%26_sour_soup.JPG',
   },
   {
     id: 'sop-02',
@@ -1551,7 +1551,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Ping_SJ_hot_%26_sour_soup.JPG/960px-Ping_SJ_hot_%26_sour_soup.JPG',
   },
   {
     id: 'sop-03',
@@ -1565,7 +1565,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Tomato_soup%2C_plant-based_%2844040252791%29.jpg/960px-Tomato_soup%2C_plant-based_%2844040252791%29.jpg',
   },
   {
     id: 'sop-04',
@@ -1579,7 +1579,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Corn_soup.jpg/960px-Corn_soup.jpg',
   },
   {
     id: 'sop-05',
@@ -1593,7 +1593,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Ping_SJ_hot_%26_sour_soup.JPG/960px-Ping_SJ_hot_%26_sour_soup.JPG',
   },
 
   // ==========================================
@@ -1611,7 +1611,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Roasted_Papad_-_Howrah_2013-11-02_4068.jpg/960px-Roasted_Papad_-_Howrah_2013-11-02_4068.jpg',
   },
   {
     id: 'khk-02',
@@ -1625,7 +1625,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Roasted_Papad_-_Howrah_2013-11-02_4068.jpg/960px-Roasted_Papad_-_Howrah_2013-11-02_4068.jpg',
   },
   {
     id: 'khk-03',
@@ -1639,7 +1639,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Roasted_Papad_-_Howrah_2013-11-02_4068.jpg/960px-Roasted_Papad_-_Howrah_2013-11-02_4068.jpg',
   },
   {
     id: 'khk-04',
@@ -1653,7 +1653,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Roasted_Papad_-_Howrah_2013-11-02_4068.jpg/960px-Roasted_Papad_-_Howrah_2013-11-02_4068.jpg',
   },
   {
     id: 'khk-05',
@@ -1667,7 +1667,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Cucumber-raita.jpg/960px-Cucumber-raita.jpg',
   },
   {
     id: 'khk-06',
@@ -1681,7 +1681,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Cucumber-raita.jpg/960px-Cucumber-raita.jpg',
   },
 
   // ==========================================
@@ -1727,7 +1727,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281e4b?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'cnt-04',
@@ -1741,7 +1741,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'medium',
     isPopular: false,
-    imageUrl: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281e4b?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: 'cnt-05',
@@ -1769,7 +1769,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: false,
     spiceLevel: 'spicy',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800&auto=format&fit=crop&q=80',
   },
 
   // ==========================================
@@ -1787,7 +1787,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Salt_lassi.jpg/960px-Salt_lassi.jpg',
   },
   {
     id: 'bev-02',
@@ -1801,7 +1801,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/15-09-26-RalfR-WLC-0072.jpg/960px-15-09-26-RalfR-WLC-0072.jpg',
   },
   {
     id: 'bev-03',
@@ -1829,7 +1829,7 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Ice_cream_with_whipped_cream%2C_chocolate_syrup%2C_and_a_wafer_%28cropped%29.jpg/960px-Ice_cream_with_whipped_cream%2C_chocolate_syrup%2C_and_a_wafer_%28cropped%29.jpg',
   },
   {
     id: 'bev-05',
@@ -1857,6 +1857,6 @@ export const OFFICIAL_MENU_ITEMS: MenuItem[] = [
     isJainAvailable: true,
     spiceLevel: 'mild',
     isPopular: true,
-    imageUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Gulab-jamun-wallpaper-1.jpg',
   },
 ];

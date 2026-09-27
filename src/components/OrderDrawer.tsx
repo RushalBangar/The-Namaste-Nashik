@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CartItem } from '../types';
 import { RESTAURANT_INFO } from '../data/restaurantData';
+import { DishVisual } from './DishIllustrations';
 
 interface OrderDrawerProps {
   isOpen: boolean;
@@ -124,19 +125,30 @@ export const OrderDrawer: React.FC<OrderDrawerProps> = ({
 
               return (
                 <div key={cItem.item.id} className="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2 border border-outline-variant/30 shadow-xs">
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-1.5">
-                        <span className="inline-flex items-center justify-center w-3 h-3 border border-tertiary rounded-[1.5px] p-[1px] shrink-0" title="Pure Veg">
-                          <span className="w-1 h-1 rounded-full bg-tertiary"></span>
-                        </span>
-                        <h4 className="font-label-md text-xs sm:text-sm font-bold text-on-surface truncate">
-                          {cItem.item.name}
-                        </h4>
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 border border-outline-variant/30">
+                        <DishVisual
+                          dishId={cItem.item.id}
+                          imageUrl={cItem.item.imageUrl}
+                          name={cItem.item.name}
+                          category={cItem.item.category}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      <span className="font-label-sm text-[11px] text-secondary font-semibold pl-4.5 block">
-                        ₹{cItem.item.price} each
-                      </span>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1.5">
+                          <span className="inline-flex items-center justify-center w-3 h-3 border border-tertiary rounded-[1.5px] p-[1px] shrink-0" title="Pure Veg">
+                            <span className="w-1 h-1 rounded-full bg-tertiary"></span>
+                          </span>
+                          <h4 className="font-label-md text-xs sm:text-sm font-bold text-on-surface truncate">
+                            {cItem.item.name}
+                          </h4>
+                        </div>
+                        <span className="font-label-sm text-[11px] text-secondary font-semibold pl-4.5 block">
+                          ₹{cItem.item.price} each
+                        </span>
+                      </div>
                     </div>
                     <span className="font-headline-sm text-sm sm:text-base font-bold text-primary shrink-0">
                       ₹{itemTotal}

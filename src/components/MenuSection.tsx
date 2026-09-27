@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { MenuItem } from '../types';
 import { DishModal } from './DishModal';
+import { DishVisual } from './DishIllustrations';
 import { OFFICIAL_CATEGORIES, OFFICIAL_MENU_ITEMS } from '../data/officialMenuData';
 
 interface MenuSectionProps {
@@ -461,9 +462,11 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                       <div>
                         {/* Dish Visual Header */}
                         <div className="relative h-48 overflow-hidden bg-surface-container-high">
-                          <img
-                            src={dish.imageUrl}
-                            alt={dish.name}
+                          <DishVisual
+                            dishId={dish.id}
+                            imageUrl={dish.imageUrl}
+                            name={dish.name}
+                            category={dish.category}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                           />
 
