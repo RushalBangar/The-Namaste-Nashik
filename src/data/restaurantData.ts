@@ -18,7 +18,7 @@ export const RESTAURANT_INFO = {
   hours: "11:30 AM – 11:00 PM Daily",
   thaliHours: "Lunch: 12:00 PM - 3:30 PM • Dinner: 7:00 PM - 10:30 PM",
   services: ["Dine-in", "Drive-Through Takeaway", "No-Contact Delivery"],
-  googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Thatte+Nagar+Nashik+Maharashtra+422005",
+  googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=The+Namastey+Nashik+Thatte+Nagar+Nashik+Maharashtra+422005",
   logoUrl: "https://lh3.googleusercontent.com/aida/AEtjO1WTXjBokMSgPKijLTTlczSfCiEZdYT07KAb5b8LwGzNsCDfy9S5x0XBvfNlhWpvZYVov3YK13MKRITN3AXtIErqD0ruJJrf1lvQ-8AQBDtrl_NA7oRWfHr3nPVXqqd732PGd5ql7ZE8-I8QG23rw1dJ-b1GRMunjuLJyBnzib4jkU61-L1unQ2i8TsYXu2aCMy30lHy90-71_yvJn1uRhPFHgmF9PfB_hDm5boh2_dNqG-Gdi7hlhiwQH0",
   heroImageUrl: "https://lh3.googleusercontent.com/aida/AEtjO1VobwBkIJ7KA_m4bGdqrJDIYHLSH6jKvi3kjgnNBr5uFjHC_JgbI-zuloLv7717cWt2f3PE1OfysvBA1y8bj_udUdZQaZuGZ7YzQmCaRAxbExXqVYTi2r7xNbum6xiaMQrRMzQIeLSRf9JmoAIt9crgeAb7yila8Q1_-eISacFCsueHJ8x69onWbb6FlUkQ06OQpU_vuQqne2uELmJTFYb5OM60PIKh8ZPdF3JnpvuJZMU4DGq4Uev4Es",
   dineInImageUrl: "https://lh3.googleusercontent.com/aida/AEtjO1WT_zq6KbwPS30WahjLXBt-G5bMKuF1bUUT55UwF5QXBaAS_s86jaleJRJUtUUgIfZDCssVfkasGEX7ZSjeicGhzSf6wcuWmO5s4JxyN25T13nhkwWp6jlg0p3wwW8ZB71jmTuFVRpQKM3Xn_8SRULmf-Z9dlg3XT4ccEW8ZDAgdor4KWZkllFIAKwo3CsfaPDOmxpE5yZZXJthcoJodzBxhmuZXKiYlwygmhTGMVkLY6PsYlGPVRcMQEQ",
