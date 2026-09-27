@@ -1,5 +1,6 @@
 import React from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
+import { RestaurantLogo } from './RestaurantLogo';
 
 interface FooterProps {
   onOpenReservation: () => void;
@@ -18,21 +19,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenReservation }) => {
           
           {/* Brand & Culture (5 cols) */}
           <div className="lg:col-span-5 flex flex-col items-start gap-space-md">
-            <div className="flex items-center gap-space-xs">
-              <span className="font-headline-sm text-headline-sm text-on-surface font-bold">
-                The Namastey Nashik
-              </span>
-              <span className="inline-flex items-center justify-center w-4 h-4 border border-tertiary rounded-[2px] p-[2px]">
-                <span className="w-2 h-2 rounded-full bg-tertiary"></span>
-              </span>
-            </div>
+            <RestaurantLogo size="lg" showSubtitle={true} />
 
-            <p className="font-label-md text-label-md text-secondary tracking-widest uppercase font-semibold">
-              थे नमस्ते नाशिक · शुद्ध शाकाहारी भोजन
-            </p>
-
-            <p className="font-body-md text-body-md text-on-surface-variant max-w-md">
-              Generational culinary warmth, regional Maharashtra micro-cuisines, and artisanal thalis. Steeped in Indian hospitality—Atithi Devo Bhava.
+            <p className="font-body-md text-body-md text-charcoal-muted max-w-md pt-1">
+              Nashik's premier luxury pure vegetarian culinary sanctuary. Rooted in authentic Vedic cooking principles, slow-crafted in pure desi ghee, and elevated for contemporary epicurean indulgence.
             </p>
 
             <div className="flex flex-wrap items-center gap-space-xs pt-space-xs">

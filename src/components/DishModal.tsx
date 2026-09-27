@@ -7,9 +7,10 @@ interface DishModalProps {
   isOpen: boolean;
   onClose: () => void;
   onAddToCart: (dish: MenuItem, jainPrep?: boolean) => void;
+  onOrderNow?: (dish: MenuItem, jainPrep?: boolean) => void;
 }
 
-export const DishModal: React.FC<DishModalProps> = ({ dish, isOpen, onClose, onAddToCart }) => {
+export const DishModal: React.FC<DishModalProps> = ({ dish, isOpen, onClose, onAddToCart, onOrderNow }) => {
   const [isJainSelected, setIsJainSelected] = useState(false);
   const [added, setAdded] = useState(false);
 
@@ -22,6 +23,15 @@ export const DishModal: React.FC<DishModalProps> = ({ dish, isOpen, onClose, onA
       setAdded(false);
       onClose();
     }, 900);
+  };
+
+  const handleDirectOrder = () => {
+    if (onOrderNow) {
+      onOrderNow(dish, isJainSelected && dish.isJainAvailable);
+      onClose();
+    } else {
+      handleAdd();
+    }
   };
 
   return (
@@ -133,25 +143,27 @@ export const DishModal: React.FC<DishModalProps> = ({ dish, isOpen, onClose, onA
           )}
 
           {/* Action Row */}
-          <div className="pt-2 flex items-center gap-2.5 sm:gap-3">
+          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5">
             <button
-              onClick={onClose}
-              className="px-3.5 sm:px-4 py-3 text-xs font-semibold text-on-surface-variant hover:text-on-surface border border-outline-variant/60 rounded-xl cursor-pointer min-h-[44px]"
+              onClick={handleDirectOrder}
+              className="flex-1 py-3 px-3 sm:px-4 text-xs sm:text-sm font-bold rounded-xl flex items-center justify-center gap-2 bg-tertiary hover:bg-tertiary-container text-on-tertiary shadow-md transition-all cursor-pointer min-h-[44px] active:scale-[0.98]"
             >
-              Back
+              <span className="material-symbols-outlined text-[18px]">send_to_mobile</span>
+              <span>Order Now (Direct Message)</span>
             </button>
+
             <button
               onClick={handleAdd}
-              className={`flex-1 py-3 px-4 text-xs font-bold rounded-xl flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer min-h-[44px] active:scale-[0.98] ${
+              className={`py-3 px-3 sm:px-4 text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 shadow-sm transition-all cursor-pointer min-h-[44px] active:scale-[0.98] ${
                 added
-                  ? 'bg-tertiary text-on-tertiary'
-                  : 'bg-primary hover:bg-primary-container text-on-primary hover:text-on-primary-container'
+                  ? 'bg-secondary text-on-secondary'
+                  : 'bg-surface-container-high hover:bg-surface-container text-on-surface border border-outline-variant/50'
               }`}
             >
               <span className="material-symbols-outlined text-[18px]">
-                {added ? 'check' : 'shopping_bag'}
+                {added ? 'check' : 'add_shopping_cart'}
               </span>
-              <span>{added ? 'Added to Order Bag' : `Add to Order Bag (₹${dish.price})`}</span>
+              <span>{added ? 'Added' : '+ Add to Bag'}</span>
             </button>
           </div>
 

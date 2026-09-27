@@ -10,6 +10,7 @@ interface OrderDrawerProps {
   onRemoveItem: (id: string) => void;
   onToggleJain: (id: string) => void;
   onClearCart: () => void;
+  onProceedToConfirm: (serviceType: 'takeaway' | 'delivery') => void;
 }
 
 export const OrderDrawer: React.FC<OrderDrawerProps> = ({
@@ -20,8 +21,9 @@ export const OrderDrawer: React.FC<OrderDrawerProps> = ({
   onRemoveItem,
   onToggleJain,
   onClearCart,
+  onProceedToConfirm,
 }) => {
-  const [bagServiceType, setBagServiceType] = useState<'takeaway' | 'delivery'>('takeaway');
+  const [bagServiceType, setBagServiceType] = useState<'takeaway' | 'delivery'>('delivery');
   const [currentTip, setCurrentTip] = useState<number>(0);
 
   if (!isOpen) return null;
@@ -253,25 +255,37 @@ export const OrderDrawer: React.FC<OrderDrawerProps> = ({
               </span>
             </div>
 
-            {/* WhatsApp Direct Checkout Button */}
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3 rounded-xl bg-tertiary hover:bg-tertiary-container text-on-tertiary font-label-lg text-xs sm:text-sm font-bold transition-colors flex items-center justify-center gap-2 shadow-md min-h-[44px]"
+            {/* Proceed to Enter Name & Location & Send Direct Message */}
+            <button
+              type="button"
+              onClick={() => onProceedToConfirm(bagServiceType)}
+              className="w-full py-3.5 rounded-xl bg-tertiary hover:bg-tertiary-container text-on-tertiary font-label-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 shadow-md min-h-[46px] cursor-pointer active:scale-[0.99]"
             >
-              <span className="material-symbols-outlined text-[18px]">chat</span>
-              <span>Send Order via WhatsApp</span>
-            </a>
+              <span className="material-symbols-outlined text-[20px]">send_to_mobile</span>
+              <span>Confirm Order (Enter Name & Location)</span>
+            </button>
 
-            {/* Call to Order Option */}
-            <a
-              href={`tel:${RESTAURANT_INFO.phoneRaw}`}
-              className="w-full py-2.5 rounded-xl bg-surface-container-lowest hover:bg-surface-container text-on-surface border border-outline-variant/40 font-label-md text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors text-center"
-            >
-              <span className="material-symbols-outlined text-[16px] text-secondary">call</span>
-              <span>Or Call {RESTAURANT_INFO.phone} to Order</span>
-            </a>
+            {/* Direct Quick WhatsApp or Call options */}
+            <div className="flex gap-2">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 py-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-on-surface border border-outline-variant/40 font-label-md text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors text-center"
+                title="Direct WhatsApp"
+              >
+                <span className="material-symbols-outlined text-[16px] text-tertiary">chat</span>
+                <span>Quick WhatsApp</span>
+              </a>
+
+              <a
+                href={`tel:${RESTAURANT_INFO.phoneRaw}`}
+                className="flex-1 py-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-on-surface border border-outline-variant/40 font-label-md text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors text-center"
+              >
+                <span className="material-symbols-outlined text-[16px] text-secondary">call</span>
+                <span>Call {RESTAURANT_INFO.phone}</span>
+              </a>
+            </div>
           </div>
         )}
 

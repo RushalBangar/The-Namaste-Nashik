@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
+import { RestaurantLogo } from './RestaurantLogo';
 
 interface NavbarProps {
   cartCount: number;
@@ -32,48 +33,32 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart, onOpenRes
   }, []);
 
   const navLinks = [
-    { id: 'overview', label: 'Overview', href: '#overview' },
+    { id: 'overview', label: 'Home', href: '#overview' },
     { id: 'signature-menu', label: 'Menu', href: '#signature-menu' },
-    { id: 'services', label: 'Services', href: '#services' },
+    { id: 'services', label: 'Dining Experience', href: '#services' },
     { id: 'reviews', label: 'Reviews', href: '#reviews' },
-    { id: 'location-section', label: 'Location', href: '#location-section' },
+    { id: 'location-section', label: 'Location & Hours', href: '#location-section' },
   ];
 
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-surface-container-high/60 transition-all">
-        {/* Top Announcement Ribbon */}
-        <div className="bg-primary-container text-on-primary-container py-1 px-3 text-center font-label-sm text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 sm:gap-2 tracking-wide border-b border-primary/20">
-          <span className="w-1.5 h-1.5 rounded-full bg-tertiary-fixed animate-pulse shrink-0"></span>
-          <span className="truncate">100% Pure Veg Dining · Lawate Nagar, Nashik</span>
-          <span className="hidden md:inline opacity-60">•</span>
-          <span className="hidden md:inline">Women-Owned & LGBTQ+ Welcoming</span>
-          <span className="opacity-60">•</span>
-          <a href={`tel:${RESTAURANT_INFO.phoneRaw}`} className="underline font-bold shrink-0 hover:text-primary-fixed">
-            0253 299 5031
+        {/* Top Luxury Announcement Ribbon */}
+        <div className="bg-saffron-deep text-on-primary py-1.5 px-3 text-center font-label-sm text-[11px] sm:text-xs tracking-wider uppercase flex items-center justify-center gap-2 border-b border-primary/20">
+          <span className="material-symbols-outlined text-[14px]">hotel_class</span>
+          <span className="truncate">Pure Veg Gastronomy • 100% Pure Ghee & Fresh Farm Produce • Call: {RESTAURANT_INFO.phone}</span>
+          <span className="hidden md:inline">•</span>
+          <a href={`tel:${RESTAURANT_INFO.phoneRaw}`} className="hidden md:inline font-bold underline hover:text-peach-tint">
+            {RESTAURANT_INFO.phone}
           </a>
+          <span className="material-symbols-outlined text-[14px]">hotel_class</span>
         </div>
 
         <div className="h-16 sm:h-20 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-margin flex items-center justify-between gap-2 sm:gap-space-md">
           
-          {/* Brand Logo & Title */}
-          <a className="flex items-center gap-2 sm:gap-space-sm group focus:outline-hidden min-w-0" href="#overview">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors duration-200 shrink-0">
-              <span className="material-symbols-outlined text-[20px] sm:text-[24px]">temple_hindu</span>
-            </div>
-            <div className="flex flex-col min-w-0">
-              <div className="flex items-center gap-1 sm:gap-space-xs">
-                <span className="font-headline-sm text-sm sm:text-headline-sm text-on-surface tracking-tight leading-none truncate">
-                  The Namastey Nashik
-                </span>
-                <span className="inline-flex items-center justify-center w-3 h-3 sm:w-3.5 sm:h-3.5 border border-tertiary rounded-[2px] p-[1.5px] ml-0.5 shrink-0" title="100% Pure Vegetarian">
-                  <span className="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
-                </span>
-              </div>
-              <span className="font-label-sm text-[10px] sm:text-label-sm text-secondary tracking-wider font-semibold uppercase mt-0.5 truncate">
-                थे नमस्ते नाशिक · Pure Veg
-              </span>
-            </div>
+          {/* Brand Logo & Title with Official Logo */}
+          <a className="flex items-center group focus:outline-hidden min-w-0" href="#overview">
+            <RestaurantLogo size="md" showSubtitle={true} />
           </a>
 
           {/* Desktop Navigation Links */}
@@ -81,10 +66,10 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart, onOpenRes
             {navLinks.map((link) => (
               <a
                 key={link.id}
-                className={`px-space-md py-space-xs transition-colors rounded-lg font-label-lg text-label-lg ${
+                className={`px-3 py-1.5 transition-colors rounded-lg font-label-lg text-xs sm:text-sm font-semibold ${
                   activeSection === link.id
-                    ? 'bg-primary-container text-on-primary-container font-semibold'
-                    : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
+                    ? 'bg-primary text-on-primary shadow-xs'
+                    : 'text-on-surface-variant hover:text-primary hover:bg-surface-container'
                 }`}
                 href={link.href}
               >
@@ -93,42 +78,32 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart, onOpenRes
             ))}
           </nav>
 
-          {/* Right Action Cluster */}
-          <div className="flex items-center gap-1.5 sm:gap-space-sm shrink-0">
-            {/* Phone link on desktop/tablet */}
-            <a
-              className="hidden md:flex items-center gap-space-xs px-3 py-1.5 text-on-surface hover:text-primary transition-colors font-label-md text-label-md whitespace-nowrap"
-              href={`tel:${RESTAURANT_INFO.phoneRaw}`}
-            >
-              <span className="material-symbols-outlined text-[18px] text-secondary">call</span>
-              <span>{RESTAURANT_INFO.phone}</span>
-            </a>
-
-            {/* Bag Button */}
+          {/* Action CTAs */}
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
-              aria-label="Order Bag"
-              onClick={onOpenCart}
-              className="relative p-2 sm:p-space-xs rounded-full hover:bg-surface-container active:scale-95 transition-all text-on-surface flex items-center justify-center cursor-pointer min-h-[40px] min-w-[40px]"
+              onClick={onOpenReservation}
+              className="hidden sm:inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl border border-primary text-primary hover:bg-peach-tint/40 text-xs sm:text-sm font-bold transition-all cursor-pointer min-h-[40px]"
             >
-              <span className="material-symbols-outlined text-[22px] sm:text-[24px]">shopping_bag</span>
-              <span className="absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-secondary text-on-secondary font-label-sm text-[10px] flex items-center justify-center font-bold shadow-xs">
+              <span className="material-symbols-outlined text-[18px]">table_restaurant</span>
+              <span>Book Table</span>
+            </button>
+
+            <button
+              onClick={onOpenCart}
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl bg-primary hover:bg-saffron-vibrant text-on-primary text-xs sm:text-sm font-bold shadow-sm transition-all cursor-pointer min-h-[40px] active:scale-[0.98]"
+            >
+              <span className="material-symbols-outlined text-[18px] sm:text-[20px]">shopping_bag</span>
+              <span className="hidden xs:inline">Order Bag</span>
+              <span className="px-1.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[11px] font-bold leading-none">
                 {cartCount}
               </span>
             </button>
 
-            {/* Book Table Button (Desktop) */}
-            <button
-              onClick={onOpenReservation}
-              className="hidden sm:inline-flex items-center justify-center px-space-md py-2.5 bg-primary hover:bg-primary-container text-on-primary hover:text-on-primary-container rounded-lg font-label-lg text-label-lg transition-colors duration-200 shadow-[0_2px_8px_rgba(164,53,0,0.18)] cursor-pointer"
-            >
-              Book Table
-            </button>
-
-            {/* Mobile Menu Toggle Button */}
+            {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container active:bg-surface-container-high transition-colors min-h-[40px] min-w-[40px] flex items-center justify-center cursor-pointer"
-              aria-label="Toggle menu"
+              className="xl:hidden p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors cursor-pointer min-h-[40px] min-w-[40px] flex items-center justify-center"
+              aria-label="Toggle Navigation Menu"
             >
               <span className="material-symbols-outlined text-[24px]">
                 {mobileMenuOpen ? 'close' : 'menu'}

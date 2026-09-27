@@ -55,3 +55,13 @@ export interface ReservationData {
   specialRequests?: string;
   isJainPreference?: boolean;
 }
+
+export interface CustomerOrderData {
+  name: string;
+  location: string;
+  phone?: string;
+  serviceType: 'delivery' | 'takeaway' | 'dinein';
+  notes?: string;
+  items: CartItem[];
+  totalAmount: number;
+}

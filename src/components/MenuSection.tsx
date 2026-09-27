@@ -7,9 +7,10 @@ import { DishVisual } from './DishIllustrations';
 interface MenuSectionProps {
   onAddToCart: (item: MenuItem, jainPrep?: boolean) => void;
   onOpenOrderDrawer: () => void;
+  onOrderNow?: (item: MenuItem, jainPrep?: boolean) => void;
 }
 
-export const MenuSection: React.FC<MenuSectionProps> = ({ onAddToCart, onOpenOrderDrawer }) => {
+export const MenuSection: React.FC<MenuSectionProps> = ({ onAddToCart, onOpenOrderDrawer, onOrderNow }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [jainOnly, setJainOnly] = useState<boolean>(false);
   const [selectedSpice, setSelectedSpice] = useState<'all' | 'mild' | 'medium' | 'spicy'>('all');
@@ -398,20 +399,39 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddToCart, onOpenOrd
                       </span>
                     </div>
 
-                    {/* Action Button */}
+                    {/* Action Buttons: Order Now & Add to Bag */}
                     <div className="pt-2 sm:pt-3 mt-auto flex items-center gap-2">
                       <button
-                        className={`w-full py-2.5 px-4 rounded-xl font-label-md text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer min-h-[42px] active:scale-[0.98] ${
+                        type="button"
+                        className="flex-1 py-2.5 px-3 rounded-xl font-label-md text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer min-h-[42px] bg-tertiary hover:bg-tertiary-container text-on-tertiary active:scale-[0.98]"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (onOrderNow) {
+                            onOrderNow(dish, jainOnly && dish.isJainAvailable);
+                          } else {
+                            handleAdd(dish, e);
+                          }
+                        }}
+                        title="Order this dish & send direct message to restaurant"
+                      >
+                        <span className="material-symbols-outlined text-[18px]">send_to_mobile</span>
+                        <span>Order Now</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        className={`py-2.5 px-3 rounded-xl font-label-md text-xs font-semibold transition-all flex items-center justify-center gap-1 shadow-xs cursor-pointer min-h-[42px] active:scale-[0.98] ${
                           isAdded
-                            ? 'bg-tertiary text-on-tertiary'
-                            : 'bg-primary hover:bg-primary-container text-on-primary hover:text-on-primary-container'
+                            ? 'bg-secondary text-on-secondary'
+                            : 'bg-surface-container-high hover:bg-surface-container text-on-surface border border-outline-variant/40'
                         }`}
                         onClick={(e) => handleAdd(dish, e)}
+                        title="Add to dining bag"
                       >
                         <span className="material-symbols-outlined text-[18px]">
-                          {isAdded ? 'check' : 'shopping_bag'}
+                          {isAdded ? 'check' : 'add_shopping_cart'}
                         </span>
-                        <span>{isAdded ? 'Added to Bag' : 'Add to Order Bag'}</span>
+                        <span>{isAdded ? 'Added' : '+ Bag'}</span>
                       </button>
                     </div>
                   </div>
@@ -457,6 +477,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddToCart, onOpenOrd
         isOpen={Boolean(modalDish)}
         onClose={() => setModalDish(null)}
         onAddToCart={onAddToCart}
+        onOrderNow={onOrderNow}
       />
     </section>
   );

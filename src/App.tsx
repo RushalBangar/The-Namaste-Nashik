@@ -14,6 +14,7 @@ import { LocationSection } from './components/LocationSection';
 import { Footer } from './components/Footer';
 import { ReservationModal } from './components/ReservationModal';
 import { OrderDrawer } from './components/OrderDrawer';
+import { OrderConfirmationModal } from './components/OrderConfirmationModal';
 import { MenuItem, CartItem } from './types';
 import { RESTAURANT_INFO } from './data/restaurantData';
 
@@ -29,6 +30,17 @@ export default function App() {
 
   const [isReservationOpen, setIsReservationOpen] = useState(false);
   const [isOrderDrawerOpen, setIsOrderDrawerOpen] = useState(false);
+  const [confirmOrderState, setConfirmOrderState] = useState<{
+    isOpen: boolean;
+    items: CartItem[];
+    serviceType?: 'takeaway' | 'delivery' | 'dinein';
+    isFromCart?: boolean;
+  }>({
+    isOpen: false,
+    items: [],
+    serviceType: 'delivery',
+    isFromCart: false,
+  });
 
   useEffect(() => {
     try {
@@ -51,6 +63,31 @@ export default function App() {
       }
       return [...prev, { item, quantity: 1, jainPrep }];
     });
+  };
+
+  const handleOpenDirectOrder = (item: MenuItem, jainPrep = false) => {
+    setConfirmOrderState({
+      isOpen: true,
+      items: [{ item, quantity: 1, jainPrep }],
+      serviceType: 'delivery',
+      isFromCart: false,
+    });
+  };
+
+  const handleProceedCartToConfirm = (serviceType: 'takeaway' | 'delivery') => {
+    setIsOrderDrawerOpen(false);
+    setConfirmOrderState({
+      isOpen: true,
+      items: [...cart],
+      serviceType,
+      isFromCart: true,
+    });
+  };
+
+  const handleOrderSuccess = () => {
+    if (confirmOrderState.isFromCart) {
+      setCart([]);
+    }
   };
 
   const handleUpdateQuantity = (id: string, delta: number) => {
@@ -118,6 +155,7 @@ export default function App() {
         <MenuSection
           onAddToCart={handleAddToCart}
           onOpenOrderDrawer={() => setIsOrderDrawerOpen(true)}
+          onOrderNow={handleOpenDirectOrder}
         />
 
         {/* Verified Diner Reviews */}
@@ -147,6 +185,16 @@ export default function App() {
         onRemoveItem={handleRemoveItem}
         onToggleJain={handleToggleJain}
         onClearCart={handleClearCart}
+        onProceedToConfirm={handleProceedCartToConfirm}
+      />
+
+      {/* Enter Name & Location Direct Order Confirmation Modal */}
+      <OrderConfirmationModal
+        isOpen={confirmOrderState.isOpen}
+        onClose={() => setConfirmOrderState((prev) => ({ ...prev, isOpen: false }))}
+        items={confirmOrderState.items}
+        defaultServiceType={confirmOrderState.serviceType}
+        onOrderSuccess={handleOrderSuccess}
       />
 
       {/* Mobile Sticky Action Bar */}
